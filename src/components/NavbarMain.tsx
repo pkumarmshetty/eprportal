@@ -28,7 +28,9 @@ const NavbarMain = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
+// ✅ State for login fields
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navItems = [
     'Home',
     'About CPB',
@@ -45,6 +47,16 @@ const NavbarMain = () => {
   const handleNavClick = (item: string) => {
     if (item === 'Login') setLoginOpen(true);
   };
+
+  const handlelogin= () => {
+  console.log(email, password);
+  if(email==="admin" && password==="admin") {
+    window.location.href = '/Admin'; // Redirect to home page
+  }
+  if(email==="user" && password==="user") {
+    window.location.href = '/UserDashboard'; // Redirect to home page
+  }
+}
 
   return (
     <>
@@ -138,6 +150,7 @@ const NavbarMain = () => {
           size="small"
           variant="outlined"
           placeholder="Enter"
+           onChange={(e) => setEmail(e.target.value)}
         />
       </Box>
 
@@ -151,16 +164,18 @@ const NavbarMain = () => {
           size="small"
           variant="outlined"
           placeholder="Enter"
-          type={showPassword ? 'text' : 'password'}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          onChange={(e) => setPassword(e.target.value)}
+          type={'password'}
+        //   type={showPassword ? 'text' : 'password'}
+        //   InputProps={{
+        //     endAdornment: (
+        //       <InputAdornment position="end">
+        //         <IconButton onClick={() => setShowPassword(!showPassword)}>
+        //           {showPassword ? <VisibilityOff /> : <Visibility />}
+        //         </IconButton>
+        //       </InputAdornment>
+        //     ),
+        //   }}
         />
         <Typography
           variant="body2"
@@ -226,8 +241,9 @@ const NavbarMain = () => {
         fontWeight: 500,
         px: 3,
       }}
+      onClick={handlelogin}
     >
-      Send OTP
+      Send 
     </Button>
 
     <Box sx={{ width: '100%' }}>
