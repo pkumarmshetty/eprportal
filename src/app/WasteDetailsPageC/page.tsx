@@ -69,40 +69,25 @@ export default function SurveyPreview() {
       borderCollapse: 'collapse',
       backgroundColor: '#fff',
       boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-      marginBottom: '10px'
+      marginTop: '15px'
     },
     th: {
       border: '1px solid #ccc',
       padding: '10px',
       backgroundColor: '#f0f0f0',
-      textAlign: 'left'
+      textAlign: 'left',
+      fontSize: '14px'
     },
     td: {
       border: '1px solid #ccc',
-      padding: '10px'
+      padding: '10px',
+      fontSize: '14px'
     },
-    select: {
-      width: '100%',
-      padding: '8px',
-      borderRadius: '4px',
-      border: '1px solid #ccc'
-    },
-    input: {
-      width: '100%',
-      padding: '8px',
-      borderRadius: '4px',
-      border: '1px solid #ccc'
-    },
-    upload: {
-      width: '100%'
-    },
-    addMore: {
-      textAlign: 'right',
-      marginTop: '10px',
+    editButton: {
       color: 'green',
       textDecoration: 'underline',
-      fontWeight: 'bold',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      fontWeight: 'bold'
     },
     buttonGroup: {
       display: 'flex',
@@ -190,7 +175,7 @@ export default function SurveyPreview() {
           <button
             style={{
               padding: '10px 20px',
-              backgroundColor: '#9CBC4C',
+              backgroundColor: 'gray',
               color: '#000000',
               border: 'none',
               borderRadius: '6px',
@@ -204,7 +189,7 @@ export default function SurveyPreview() {
           <button
             style={{
               padding: '10px 20px',
-              backgroundColor: 'gray',
+              backgroundColor: '#9CBC4C',
               color: '#000000',
               border: 'none',
               borderRadius: '6px',
@@ -231,50 +216,62 @@ export default function SurveyPreview() {
         </div>
         <div style={styles.page}>
           <div style={styles.heading}>
-            Pertaining to Liquid Effluent and Gaseous Emissions from production facilities
+            Pertaining to waste
           </div>
-          <div style={styles.card}>
-            <div style={styles.subheading}>Details of consent (Air and Water act)
 
+          <div style={styles.card}>
+            <div style={styles.subheading}>
+              State-Wise category-wise quantity of (Pre + Post-Consumer) PW Generated (TPA)
             </div>
 
             <table style={styles.table}>
               <thead>
                 <tr>
-                  <th style={styles.th}></th>
-                  <th style={styles.th} colSpan="3">Water Act</th>
-                  <th style={styles.th} colSpan="3">Air Act</th>
+                  <th style={styles.th} rowSpan="2">S.No</th>
+                  <th style={styles.th} rowSpan="2">State Name</th>
+                  <th style={styles.th} rowSpan="2">Year</th>
+                  <th style={styles.th} rowSpan="2">Category of Plastic</th>
+                  <th style={styles.th} colSpan="2">Pre Consumer Waste</th>
+                  <th style={styles.th} colSpan="2">Post Consumer Waste</th>
+                  <th style={styles.th} rowSpan="2">Action</th>
                 </tr>
                 <tr>
-                  <th style={styles.th}>State</th>
-                  <th style={styles.th}>Application No</th>
-                  <th style={styles.th}>Validity of Consent</th>
-                  <th style={styles.th}>Upload Consent Document</th>
-                  <th style={styles.th}>Application No</th>
-                  <th style={styles.th}>Validity of Consent</th>
-                  <th style={styles.th}>Upload Consent Document</th>
+                  <th style={styles.th}>Plastic Qty (TPA)</th>
+                  <th style={styles.th}>Recycled Plastic (%)</th>
+                  <th style={styles.th}>Plastic Qty (TPA)</th>
+                  <th style={styles.th}>Recycled Plastic (%)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style={styles.td}>
-                    <select style={styles.select}>
-                      <option>Select State</option>
-                      <option>Delhi</option>
-                      <option>Haryana</option>
-                    </select>
-                  </td>
-                  <td style={styles.td}><input type="text" style={styles.input} /></td>
-                  <td style={styles.td}><input type="date" style={styles.input} /></td>
-                  <td style={styles.td}><input type="file" style={styles.upload} /></td>
-                  <td style={styles.td}><input type="text" style={styles.input} /></td>
-                  <td style={styles.td}><input type="date" style={styles.input} /></td>
-                  <td style={styles.td}><input type="file" style={styles.upload} /></td>
+                  <td style={styles.td} rowSpan="3">01</td>
+                  <td style={styles.td} rowSpan="3">Delhi</td>
+                  <td style={styles.td} rowSpan="3">2021-22</td>
+                  <td style={styles.td}>Rigid Plastics (Cat-I)</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
+                </tr>
+                <tr>
+                  <td style={styles.td}>Flexible Plastic (Cat-II)</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
+                </tr>
+                <tr>
+                  <td style={styles.td}>MLP (Cat-III)</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}>0</td>
+                  <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
                 </tr>
               </tbody>
             </table>
-
-            <div style={styles.addMore}>Add More</div>
           </div>
 
           <div style={styles.buttonGroup}>
