@@ -177,7 +177,7 @@ export default function SurveyPreview() {
           <button
             style={{
               padding: '10px 20px',
-              backgroundColor: '#9CBC4C',
+              backgroundColor: 'gray',
               color: '#000000',
               border: 'none',
               borderRadius: '6px',
@@ -191,7 +191,7 @@ export default function SurveyPreview() {
           <button
             style={{
               padding: '10px 20px',
-              backgroundColor: 'gray',
+              backgroundColor: '#9CBC4C',
               color: '#000000',
               border: 'none',
               borderRadius: '6px',
