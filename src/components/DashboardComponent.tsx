@@ -144,7 +144,7 @@ export default function DashboardComponent({ children }: { children: React.React
             </ListItem>
             <ListItem disablePadding >
               <ListItemButton
-                onClick={() => router.push('/FormViewPage2')}
+                onClick={() => router.push('/WasteCategory')}
                 sx={{
                   borderRadius: '30px',
                   mx: 1,

@@ -46,27 +46,29 @@ export default function SurveyPreview() {
   if (!model) return <p>No survey data found in localStorage.</p>;
 
   return (
-    <DashboardComponent>
-    <div style={{ maxWidth: '100%' }}>
-      <Survey model={model} />
-      <div style={{  textAlign: 'center' }}>
-        <button
-          onClick={handleSubmit}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            backgroundColor: '#1976d2',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer',
-          }}
-        >
-          Submit
-        </button>
-      </div>
+   <DashboardComponent>
+  <div style={{ maxWidth: '100%' }}>
+    <h5 style={{ fontWeight: 'bold' }}>Common Details (Account Details)</h5>
+    <Survey model={model} />
+    <div style={{ textAlign: 'right', marginTop: '16px' }}>
+      <button
+        onClick={handleSubmit}
+        style={{
+          padding: '10px 20px',
+          fontSize: '16px',
+          backgroundColor: '#1976d2',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '6px',
+          cursor: 'pointer',
+        }}
+      >
+        Submit
+      </button>
     </div>
-    </DashboardComponent>
+  </div>
+</DashboardComponent>
+
   );
 }
 
