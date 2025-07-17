@@ -25,11 +25,28 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+/* .hide-scrollbar {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none; 
+} */
+
+.hide-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+
+

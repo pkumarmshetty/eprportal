@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+// components/Survey.tsx
+import 'survey-core/survey-core.css';
+import 'survey-creator-core/survey-creator-core.min.css';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -18,7 +18,14 @@ function HomePage() {
     'https://i.ibb.co/zVyrc6jq/p2.jpg',
     'https://i.ibb.co/VYMXchkq/p3.jpg',
     'https://i.ibb.co/84DLGQy2/p4.jpg',
-    
+    'https://i.ibb.co/pBSQjpdp/p1.jpg',
+    'https://i.ibb.co/zVyrc6jq/p2.jpg',
+    'https://i.ibb.co/VYMXchkq/p3.jpg',
+    'https://i.ibb.co/84DLGQy2/p4.jpg',
+    'https://i.ibb.co/pBSQjpdp/p1.jpg',
+    'https://i.ibb.co/zVyrc6jq/p2.jpg',
+    'https://i.ibb.co/VYMXchkq/p3.jpg',
+    'https://i.ibb.co/84DLGQy2/p4.jpg',
   ];
 
   return (
