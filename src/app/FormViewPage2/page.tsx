@@ -144,10 +144,9 @@ export default function SurveyPreview() {
                 </button>
 
             </div>
-
-            <div style={{ textAlign: 'right', marginTop: '16px' }}>
-                <Survey model={model} />
-                <button
+            <div>
+<Survey model={model} />
+<button
                     onClick={() => {
                         handleSubmit();
                         window.location.href = '/WasteDetailsPageB';
@@ -164,6 +163,11 @@ export default function SurveyPreview() {
                 >
                     Submit
                 </button>
+            </div>
+ 
+            <div style={{ textAlign: 'right', marginTop: '16px' }}>
+               
+                
 
             </div>
 

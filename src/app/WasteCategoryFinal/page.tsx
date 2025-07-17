@@ -5,7 +5,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 export default function WasteCategoryCards() {
-     const router = useRouter();
+  const router = useRouter();
   return (
     <DashboardComponent>
       <Box>
@@ -25,7 +25,7 @@ export default function WasteCategoryCards() {
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-               height: '350px',
+              height: '350px',
               backgroundImage: 'url(https://i.ibb.co/pBSQjpdp/p1.jpg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -63,29 +63,29 @@ export default function WasteCategoryCards() {
                 textTransform: 'none',
                 zIndex: 1,
               }}
-              
+
             >
               Registered
             </Button>
-           <Button
-  variant="contained"
-  size="small"
-  sx={{
-    position: 'absolute',
-    bottom: '16px',
-    left: '16px',
-    textTransform: 'none',
-    zIndex: 1,
-    backgroundColor: 'lightgray',
-    color: '#000',
-    '&:hover': {
-      backgroundColor: '#c0c0c0', // slightly darker on hover
-    },
-  }}
-  onClick={() => router.push('/FormViewPage2')}
->
-  Review
-</Button>
+            <Button
+              variant="contained"
+              size="small"
+              sx={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px',
+                textTransform: 'none',
+                zIndex: 1,
+                backgroundColor: 'lightgray',
+                color: '#000',
+                '&:hover': {
+                  backgroundColor: '#c0c0c0', // slightly darker on hover
+                },
+              }}
+              onClick={() => router.push('/FormViewPage2')}
+            >
+              Review
+            </Button>
 
           </div>
 
@@ -127,9 +127,7 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                color:'red'
               }}
-              onClick={()=>router.push('/FormViewPage2')}
             >
               Not Registered
             </Button>
@@ -144,7 +142,7 @@ export default function WasteCategoryCards() {
                 textTransform: 'none',
                 zIndex: 1,
               }}
-              onClick={()=>router.push('/FormViewPage2')}
+              onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
@@ -154,7 +152,7 @@ export default function WasteCategoryCards() {
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-               height: '350px',
+              height: '350px',
               backgroundImage: 'url(https://i.ibb.co/VYMXchkq/p3.jpg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -193,24 +191,24 @@ export default function WasteCategoryCards() {
               Not Registered
             </Button>
             <Button
-  variant="contained"
-  size="small"
-  sx={{
-    position: 'absolute',
-    bottom: 16,
-    left: 16,
-    textTransform: 'none',
-    zIndex: 1,
-    backgroundColor: 'lightgray',
-    color: '#000', // dark text for readability
-    '&:hover': {
-      backgroundColor: '#c0c0c0', // darker gray on hover
-    },
-  }}
-  onClick={() => router.push('/FormViewPage2')}
->
-  Track Status
-</Button>
+              variant="contained"
+              size="small"
+              sx={{
+                position: 'absolute',
+                bottom: 16,
+                left: 16,
+                textTransform: 'none',
+                zIndex: 1,
+                backgroundColor: 'lightgray',
+                color: '#000', // dark text for readability
+                '&:hover': {
+                  backgroundColor: '#c0c0c0', // darker gray on hover
+                },
+              }}
+              onClick={() => router.push('/TrackPage')}
+            >
+              Track Status
+            </Button>
 
           </div>
 
@@ -267,7 +265,7 @@ export default function WasteCategoryCards() {
                 textTransform: 'none',
                 zIndex: 1,
               }}
-              onClick={()=>router.push('/FormViewPage2')}
+              onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
