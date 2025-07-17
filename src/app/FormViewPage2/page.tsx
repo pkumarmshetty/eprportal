@@ -144,28 +144,29 @@ export default function SurveyPreview() {
                 </button>
 
             </div>
-            <Survey model={model} />
-                <div style={{ textAlign: 'right', marginTop: '16px' }}>
-                 <button
-  onClick={() => {
-    handleSubmit();
-    window.location.href = '/WasteDetailsPageB';
-  }}
-  style={{
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#1976d2',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-  }}
->
-  Submit
-</button>
 
-                </div>
-        
+            <div style={{ textAlign: 'right', marginTop: '16px' }}>
+                <Survey model={model} />
+                <button
+                    onClick={() => {
+                        handleSubmit();
+                        window.location.href = '/WasteDetailsPageB';
+                    }}
+                    style={{
+                        padding: '10px 20px',
+                        fontSize: '16px',
+                        backgroundColor: '#1976d2',
+                        color: '#fff',
+                        border: 'none',
+                        borderRadius: '6px',
+                        cursor: 'pointer',
+                    }}
+                >
+                    Submit
+                </button>
+
+            </div>
+
         </DashboardComponent>
     );
 }
