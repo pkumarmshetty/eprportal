@@ -183,7 +183,7 @@ export default function SurveyBuilder() {
       console.log('📝 Survey JSON:', json);
 
       // ✅ Save to localStorage
-      localStorage.setItem('survey-schema', JSON.stringify(json));
+      localStorage.setItem('application-details', JSON.stringify(json));
 
       setSavedJson(json);
       setPreviewModel(new Model(json));
