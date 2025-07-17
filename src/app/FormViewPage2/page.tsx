@@ -10,7 +10,7 @@ export default function SurveyPreview() {
     const [model, setModel] = useState<Model | null>(null);
 
     useEffect(() => {
-        const stored = localStorage.getItem('survey-schema');
+        const stored = localStorage.getItem('survey-schemass');
         console.log('🔍 Loaded survey schema:', stored);
 
         if (stored) {
@@ -142,7 +142,30 @@ export default function SurveyPreview() {
                 >
                     Part 4
                 </button>
+
             </div>
+            <Survey model={model} />
+                <div style={{ textAlign: 'right', marginTop: '16px' }}>
+                 <button
+  onClick={() => {
+    handleSubmit();
+    window.location.href = '/WasteDetailsPageB';
+  }}
+  style={{
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#1976d2',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+  }}
+>
+  Submit
+</button>
+
+                </div>
+        
         </DashboardComponent>
     );
 }
