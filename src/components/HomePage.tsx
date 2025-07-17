@@ -2,9 +2,12 @@
 
 'use client';
 import React from 'react';
-import Navbar from './Navbar';
-import NavbarMain from './NavbarMain';
+// import Navbar from './Navbar';
+// import NavbarMain from './NavbarMain';
+import dynamic from 'next/dynamic';
+const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
 
+const NavbarMain = dynamic(() => import('./NavbarMain'), { ssr: false });
 function HomePage() {
   const dummyImages = [
     'https://i.ibb.co/pBSQjpdp/p1.jpg',
@@ -15,20 +18,13 @@ function HomePage() {
     'https://i.ibb.co/zVyrc6jq/p2.jpg',
     'https://i.ibb.co/VYMXchkq/p3.jpg',
     'https://i.ibb.co/84DLGQy2/p4.jpg',
-     'https://i.ibb.co/pBSQjpdp/p1.jpg',
-    'https://i.ibb.co/zVyrc6jq/p2.jpg',
-    'https://i.ibb.co/VYMXchkq/p3.jpg',
-    'https://i.ibb.co/84DLGQy2/p4.jpg',
-    'https://i.ibb.co/pBSQjpdp/p1.jpg',
-    'https://i.ibb.co/zVyrc6jq/p2.jpg',
-    'https://i.ibb.co/VYMXchkq/p3.jpg',
-    'https://i.ibb.co/84DLGQy2/p4.jpg',
+    
   ];
 
   return (
     <>
       <Navbar />
-      <NavbarMain />
+      <NavbarMain /> 
 
       <div
         style={{
