@@ -4,6 +4,8 @@ import "./globals.css";
 // components/Survey.tsx
 import 'survey-core/survey-core.css';
 import 'survey-creator-core/survey-creator-core.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

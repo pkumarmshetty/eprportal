@@ -23,9 +23,9 @@ const Navbar = () => {
   position="static"
   elevation={0}
   sx={{
-    backgroundColor: 'white',
-    border: '1px solid #DDDDDD',
-    color: 'black',
+    backgroundColor: 'green',
+    border: '1px solid lightgeen',
+    color: 'white',
   }}
 >
   <Toolbar
@@ -38,14 +38,14 @@ const Navbar = () => {
   >
     {/* Left Menu */}
     <Box sx={{ display: 'flex', gap: 3 }}>
-      <Typography variant="body2" sx={{ cursor: 'pointer', color: 'black' }}>Home |</Typography>
-      <Typography variant="body2" sx={{ cursor: 'pointer', color: 'black' }}>Site Map |</Typography>
-      <Typography variant="body2" sx={{ cursor: 'pointer', color: 'black' }}>RTI</Typography>
+      <Typography variant="body2" sx={{ cursor: 'pointer', color: 'white' }}>Home |</Typography>
+      <Typography variant="body2" sx={{ cursor: 'pointer', color: 'white' }}>Site Map |</Typography>
+      <Typography variant="body2" sx={{ cursor: 'pointer', color: 'white' }}>RTI</Typography>
     </Box>
 
     {/* Right Language Dropdown */}
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-      <Typography variant="body2" sx={{ color: 'black' }}>Language</Typography>
+      <Typography variant="body2" sx={{ color: 'white' }}>Language</Typography>
       <FormControl size="small" variant="outlined" sx={{ minWidth: 100 }}>
         <Select
           value={language}
