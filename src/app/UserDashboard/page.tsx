@@ -150,7 +150,7 @@ function page() {
             ))}
           </div>
         </div>
-        {!isRegistered === "true" ? <h3>No Record Found</h3> : <Box sx={{ mt: 4 }}>
+        {!isRegistered ? <h3>No Record Found</h3> : <Box sx={{ mt: 4 }}>
           <h3 style={{ padding: '20px 0px', fontWeight: 'bold' }}>New Registration</h3>
           <TableContainer component={Paper}>
             <Table>
