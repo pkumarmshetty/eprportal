@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import DashboardComponent from '@/components/DashboardComponent';
 import Image from 'next/image';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 // import { useRouter } from 'next/router';
 
 export default function SurveyPreview() {
@@ -151,93 +152,118 @@ export default function SurveyPreview() {
   };
 
   return (
-    <DashboardComponent>
-      <div style={{ maxWidth: '100%' }}>
-        <div style={styles.container}>
-          <header style={styles.header}>EPR Registration</header>
-
-          <div style={styles.main}>
-            {/* Left Section */}
-            <div style={{ ...styles.section, ...styles.leftSection }}>
-              <div style={styles.tracker}>
-                <div style={styles.step}>
-                  <div style={styles.circleInactive}></div>
-                  <span style={styles.stepTextInactive}>Payment</span>
-                </div>
-                <div style={styles.step}>
-                  <div style={styles.circleActive}></div>
-                  <span style={styles.stepTextActive}>Billing</span>
-                </div>
-                <div style={styles.step}>
-                  <div style={styles.circleInactive}></div>
-                  <span style={styles.stepTextInactive}>Confirmation</span>
-                </div>
-              </div>
-
-              <div>
-                <h3>Payment Method</h3>
-                <div style={styles.radioGroup}>
-                  <label><input type="radio" name="method" defaultChecked /> 💳 Credit Card</label>
-                  <label><input type="radio" name="method" /> 🅿️ PayPal</label>
-                </div>
-              </div>
-
-              <div>
-                <h3>Payment Details</h3>
-                <input type="text" placeholder="Enter Name on Card" style={styles.input} />
-                <div style={styles.cardNumber}>
-                  <input type="text" placeholder="Card Number" style={styles.input} />
-                  <Image src="/visa-logo.png" alt="Visa" width={40} height={20} />
-                </div>
-                <div style={styles.row}>
-                  <input type="text" placeholder="Expiration Date" style={styles.input} />
-                  <input type="text" placeholder="CVV Code" style={styles.input} />
-                </div>
-                <label style={styles.checkbox}>
-                  <input type="checkbox" /> By clicking "Confirm Payment" I agree to the company's terms of service.
-                </label>
-              </div>
-            </div>
-
-            {/* Right Section */}
-            <div style={{ ...styles.section, ...styles.rightSection }}>
-              <div style={styles.companyInfo}>
-                <div><strong>Application Type</strong><br />Small</div>
-                <div><strong>GST Number</strong><br />27ABCDE1234F1Z5</div>
-                <div><strong>Type of Business</strong><br />Small</div>
-                <div><strong>Type of Company</strong><br />Small</div>
-                <div><strong>Trade Name</strong><br />Small</div>
-                <div><strong>Legal Name</strong><br />Recycler</div>
-              </div>
-
-              <hr />
-
-              <div style={styles.billingSummary}>
-                <div><strong>Total Payment:</strong> ₹2400</div>
-                <div><strong>GST:</strong> ₹250</div>
-                <div><strong>Discount:</strong> ₹500</div>
-                <div><strong>Total:</strong> ₹2150</div>
-              </div>
-
-              <button style={styles.confirmBtn} onClick={() => setShowSuccess(true)}>
-                Confirm Payment
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {showSuccess && (
-          <div style={styles.modalOverlay}>
-            <div style={styles.modal}>
-              <h2 style={styles.modalHeading}>Payment Successful!</h2>
-              <p style={styles.modalText}>Registration is Completed. Verification is Pending.</p>
-              <button style={styles.modalButton}>
-                Go to Dashboard
-              </button>
-            </div>
-          </div>
-        )}
+    <div style={{ maxWidth: '100%', background: 'white' }}>
+      <div>
+        <AppBar
+          position="fixed"
+          sx={{
+            width: '100%',
+            background: 'white',
+            color: 'black',
+            boxShadow: 1,
+            zIndex: 1201,
+          }}
+        >
+          <Toolbar sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <Typography variant="h6" sx={{ fontSize: '1rem', color: 'black' }}>
+              <img
+                src="https://i.ibb.co/84sRtgGc/Frame-58270-1.png"
+                alt="Logo"
+                style={{ height: '40px', width: 'auto' }}
+              />
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
-    </DashboardComponent>
+      <div>
+
+        <div style={{ maxWidth: '100%' }}>
+          <div style={styles.container}>
+            <header style={styles.header}>EPR Registration</header>
+
+            <div style={styles.main}>
+              {/* Left Section */}
+              <div style={{ ...styles.section, ...styles.leftSection }}>
+                <div style={styles.tracker}>
+                  <div style={styles.step}>
+                    <div style={styles.circleInactive}></div>
+                    <span style={styles.stepTextInactive}>Payment</span>
+                  </div>
+                  <div style={styles.step}>
+                    <div style={styles.circleActive}></div>
+                    <span style={styles.stepTextActive}>Billing</span>
+                  </div>
+                  <div style={styles.step}>
+                    <div style={styles.circleInactive}></div>
+                    <span style={styles.stepTextInactive}>Confirmation</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3>Payment Method</h3>
+                  <div style={styles.radioGroup}>
+                    <label><input type="radio" name="method" defaultChecked /> 💳 Credit Card</label>
+                    <label><input type="radio" name="method" /> 🅿️ PayPal</label>
+                  </div>
+                </div>
+
+                <div>
+                  <h3>Payment Details</h3>
+                  <input type="text" placeholder="Enter Name on Card" style={styles.input} />
+                  <div style={styles.cardNumber}>
+                    <input type="text" placeholder="Card Number" style={styles.input} />
+                    <Image src="/visa-logo.png" alt="Visa" width={40} height={20} />
+                  </div>
+                  <div style={styles.row}>
+                    <input type="text" placeholder="Expiration Date" style={styles.input} />
+                    <input type="text" placeholder="CVV Code" style={styles.input} />
+                  </div>
+                  <label style={styles.checkbox}>
+                    <input type="checkbox" /> By clicking "Confirm Payment" I agree to the company's terms of service.
+                  </label>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div style={{ ...styles.section, ...styles.rightSection }}>
+                <div style={styles.companyInfo}>
+                  <div><strong>Application Type</strong><br />Small</div>
+                  <div><strong>GST Number</strong><br />27ABCDE1234F1Z5</div>
+                  <div><strong>Type of Business</strong><br />Small</div>
+                  <div><strong>Type of Company</strong><br />Small</div>
+                  <div><strong>Trade Name</strong><br />Small</div>
+                  <div><strong>Legal Name</strong><br />Recycler</div>
+                </div>
+
+                <hr />
+
+                <div style={styles.billingSummary}>
+                  <div><strong>Total Payment:</strong> ₹2400</div>
+                  <div><strong>GST:</strong> ₹250</div>
+                  <div><strong>Discount:</strong> ₹500</div>
+                  <div><strong>Total:</strong> ₹2150</div>
+                </div>
+
+                <button style={styles.confirmBtn} onClick={() => setShowSuccess(true)}>
+                  Confirm Payment
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {showSuccess && (
+            <div style={styles.modalOverlay}>
+              <div style={styles.modal}>
+                <h2 style={styles.modalHeading}>Payment Successful!</h2>
+                <p style={styles.modalText}>Registration is Completed. Verification is Pending.</p>
+                <button style={styles.modalButton}>
+                  Go to Dashboard
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
