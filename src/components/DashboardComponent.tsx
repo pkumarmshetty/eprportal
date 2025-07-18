@@ -24,9 +24,14 @@ const drawerWidth = 240;
 
 export default function DashboardComponent({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const [first, setfirst] = React.useState('')
+  React.useEffect(() => {
+    let role = localStorage.getItem('producer');
 
+    setfirst(role);
+  }, [setfirst])
   return (
-    <Box sx={{ display: 'flex',zoom: 0.8 }}>
+    <Box sx={{ display: 'flex', zoom: 0.8 }}>
       <CssBaseline />
       {/* <AppBar
         position="fixed"
@@ -41,37 +46,40 @@ export default function DashboardComponent({ children }: { children: React.React
           
         </Toolbar>
       </AppBar> */}
-<AppBar
-  position="fixed"
-  sx={{
-    width: `calc(100% - ${drawerWidth}px)`,
-    ml: `${drawerWidth}px`,
-    background: 'white',
-    color: 'black',
-  }}
->
-  <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-    <Button
-      variant="outlined"
-      color="inherit"
-      onClick={() => router.push('/')}
-      sx={{
-        borderRadius: '20px',
-        textTransform: 'none',
-        fontWeight: 500,
-        px: 3,
-        borderColor: '#000',
-        color: '#000',
-        '&:hover': {
-          backgroundColor: '#000',
-          color: '#fff',
-        },
-      }}
-    >
-      Logout
-    </Button>
-  </Toolbar>
-</AppBar>
+      <AppBar
+        position="fixed"
+        sx={{
+          width: `calc(100% - ${drawerWidth}px)`,
+          ml: `${drawerWidth}px`,
+          background: 'white',
+          color: 'black',
+        }}
+      >
+        <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            variant="outlined"
+            color="inherit"
+            onClick={() => {
+              localStorage.removeItem('producer');
+              router.push('/');
+            }}
+            sx={{
+              borderRadius: '20px',
+              textTransform: 'none',
+              fontWeight: 500,
+              px: 3,
+              borderColor: '#000',
+              color: '#000',
+              '&:hover': {
+                backgroundColor: '#000',
+                color: '#fff',
+              },
+            }}
+          >
+            Logout
+          </Button>
+        </Toolbar>
+      </AppBar>
 
       <Drawer
         sx={{
@@ -100,9 +108,118 @@ export default function DashboardComponent({ children }: { children: React.React
 
         {/* Sidebar Menu */}
         <List>
-         <ListItem disablePadding >
+          <ListItem disablePadding >
+            <ListItemButton
+              onClick={() => router.push('/UserDashboard')}
+              sx={{
+                borderRadius: '30px',
+                mx: 1,
+                '&:hover': {
+                  bgcolor: 'black',
+                  color: 'white',
+                  '& .MuiListItemIcon-root': {
+                    color: 'white',
+                  },
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AdjustIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Home"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding >
+            <ListItemButton
+              onClick={() => router.push('/FormViewPage')}
+              sx={{
+                borderRadius: '30px',
+                mx: 1,
+                '&:hover': {
+                  bgcolor: 'black',
+                  color: 'white',
+                  '& .MuiListItemIcon-root': {
+                    color: 'white',
+                  },
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AdjustIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Account Details"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding >
+            <ListItemButton
+              onClick={() => router.push('/WasteCategory')}
+              sx={{
+                borderRadius: '30px',
+                mx: 1,
+                '&:hover': {
+                  bgcolor: 'black',
+                  color: 'white',
+                  '& .MuiListItemIcon-root': {
+                    color: 'white',
+                  },
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AdjustIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Waste Category"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding >
+            <ListItemButton
+
+              sx={{
+                borderRadius: '30px',
+                mx: 1,
+                '&:hover': {
+                  bgcolor: 'black',
+                  color: 'white',
+                  '& .MuiListItemIcon-root': {
+                    color: 'white',
+                  },
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AdjustIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Material Procurment"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding >
+            <ListItemButton
+              onClick={() => router.push('/sales')}
+              sx={{
+                borderRadius: '30px',
+                mx: 1,
+                '&:hover': {
+                  bgcolor: 'black',
+                  color: 'white',
+                  '& .MuiListItemIcon-root': {
+                    color: 'white',
+                  },
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AdjustIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Sales Details"} />
+            </ListItemButton>
+          </ListItem>
+          {first === 'producer' && (
+            <ListItem disablePadding>
               <ListItemButton
-                onClick={() => router.push('/UserDashboard')}
+                component="a"
+                href="https://eprplastic.cpcb.gov.in/#/plastic/home/viewCertificates"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   borderRadius: '30px',
                   mx: 1,
@@ -118,61 +235,52 @@ export default function DashboardComponent({ children }: { children: React.React
                 <ListItemIcon>
                   <AdjustIcon />
                 </ListItemIcon>
-                <ListItemText primary={"Home"} />
+                <ListItemText primary={"Certificate Request"} />
               </ListItemButton>
             </ListItem>
-             <ListItem disablePadding >
-              <ListItemButton
-                onClick={() => router.push('/FormViewPage')}
-                sx={{
-                  borderRadius: '30px',
-                  mx: 1,
-                  '&:hover': {
-                    bgcolor: 'black',
-                    color: 'white',
-                    '& .MuiListItemIcon-root': {
-                      color: 'white',
-                    },
-                  },
-                }}
-              >
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Account Details"} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding >
-              <ListItemButton
-                onClick={() => router.push('/WasteCategory')}
-                sx={{
-                  borderRadius: '30px',
-                  mx: 1,
-                  '&:hover': {
-                    bgcolor: 'black',
-                    color: 'white',
-                    '& .MuiListItemIcon-root': {
-                      color: 'white',
-                    },
-                  },
-                }}
-              >
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Waste Category"} />
-              </ListItemButton>
-            </ListItem>
+
+            //   <ListItem disablePadding >
+            //   <ListItemButton
+
+            //     sx={{
+            //       borderRadius: '30px',
+            //       mx: 1,
+            //       '&:hover': {
+            //         bgcolor: 'black',
+            //         color: 'white',
+            //         '& .MuiListItemIcon-root': {
+            //           color: 'white',
+            //         },
+            //       },
+            //     }}
+            //   >
+            //     <ListItemIcon>
+            //       <AdjustIcon />
+            //     </ListItemIcon>
+            //     <ListItemText primary={"Certificate Request"} />
+            //   </ListItemButton>
+            // </ListItem>
+          )}
+
         </List>
       </Drawer>
 
       <Box
-        component="main"
-        sx={{ flexGrow: 1, backgroundColor: '#F9F9F9', p: 3, minHeight: '100vh',zoom:0.8 }}
-      >
-        <Toolbar />
-        {children}
-      </Box>
+  component="main"
+  sx={{
+    flexGrow: 1,
+    backgroundColor: '#F9F9F9',
+    p: 3,
+    height: '100vh',         // ensures full viewport height
+    display: 'flex',
+    flexDirection: 'column',
+    zoom: 0.8
+  }}
+>
+  <Toolbar />
+  {children}
+</Box>
+
     </Box>
   );
 }

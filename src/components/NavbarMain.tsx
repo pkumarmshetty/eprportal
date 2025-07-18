@@ -63,6 +63,11 @@ const NavbarMain = () => {
   if(email==="editor1" && password==="editor1") {
     window.location.href = '/FormBuilderPage2'; // Redirect to home page
   }
+   if(email==="producer" && password==="producer") {
+    localStorage.setItem('producer', 'producer');
+    
+    window.location.href = '/UserDashboard'; // Redirect to home page
+  }
 }
 
   return (
