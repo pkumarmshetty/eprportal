@@ -88,7 +88,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon  fontSize="large" />
+                                <CheckCircleIcon color="success" fontSize="large" />
                                 <Typography fontWeight="bold">Step 2</Typography>
                                 <Typography fontSize="small">Documents Uploaded</Typography>
                             </Box>
@@ -142,7 +142,7 @@ function Page() {
                     </Box>
                 </Box>
             </Box>
-            <div
+             <div
                 style={{
                     backgroundColor: '#2e7d32', // Green color (Material UI success)
                    width:'300px',             // Set desired height

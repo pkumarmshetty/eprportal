@@ -88,7 +88,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon  fontSize="large" />
+                                <CheckCircleIcon color="success" fontSize="large" />
                                 <Typography fontWeight="bold">Step 2</Typography>
                                 <Typography fontSize="small">Documents Uploaded</Typography>
                             </Box>
@@ -111,7 +111,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon   fontSize="large" />
+                                <CheckCircleIcon  color="success"  fontSize="large" />
                                 <Typography fontWeight="bold">Step 3</Typography>
                                 <Typography fontSize="small">Verification Done</Typography>
                             </Box>
@@ -134,7 +134,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon  fontSize="large" />
+                                <CheckCircleIcon color="success" fontSize="large" />
                                 <Typography fontWeight="bold">Step 4</Typography>
                                 <Typography fontSize="small">Approved</Typography>
                             </Box>
