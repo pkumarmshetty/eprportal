@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Survey } from 'survey-react-ui';
 import { Model } from 'survey-core';
 import DashboardComponent from '@/components/DashboardComponent';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 
 export default function SurveyPreview() {
   const [model, setModel] = useState<Model | null>(null);
@@ -46,28 +47,51 @@ export default function SurveyPreview() {
   if (!model) return <p>No survey data found in localStorage.</p>;
 
   return (
-   <DashboardComponent>
-  <div style={{ maxWidth: '100%' }}>
-    <Survey model={model} />
-    <div style={{ textAlign: 'right', marginTop: '16px' }}>
-      <button
-        onClick={handleSubmit}
-        style={{
-          padding: '10px 20px',
-          fontSize: '16px',
-          backgroundColor: '#000000ff',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '6px',
-          cursor: 'pointer',
-        }}
-      >
-       Make Payment for Signup
-      </button>
+    <div>
+      <div>
+        <AppBar
+          position="fixed"
+          sx={{
+            width: '100%',
+            background: 'white',
+            color: 'black',
+            boxShadow: 1,
+            zIndex: 1201,
+          }}
+        >
+          <Toolbar sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <Typography variant="h6" sx={{ fontSize: '1rem', color: 'black' }}>
+              <img
+                src="https://i.ibb.co/84sRtgGc/Frame-58270-1.png"
+                alt="Logo"
+                style={{ height: '40px', width: 'auto' }}
+              />
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </div>
+      <div>
+        <div style={{ maxWidth: '100%' }}>
+          <Survey model={model} />
+          <div style={{ textAlign: 'right', marginTop: '16px' }}>
+            <button
+              onClick={handleSubmit}
+              style={{
+                padding: '10px 20px',
+                fontSize: '16px',
+                backgroundColor: '#000000ff',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+              }}
+            >
+              Make Payment for Signup
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</DashboardComponent>
-
   );
 }
 
