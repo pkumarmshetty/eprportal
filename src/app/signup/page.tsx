@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Survey } from 'survey-react-ui';
 import { Model } from 'survey-core';
 import DashboardComponent from '@/components/DashboardComponent';
+import NavbarMain from '@/components/NavbarMain';
 
 export default function SurveyPreview() {
   const [model, setModel] = useState<Model | null>(null);
@@ -49,7 +50,8 @@ export default function SurveyPreview() {
   return (
   
   <div style={{ maxWidth: '100%',zoom:0.7 }}>
-    <h5 style={{ fontWeight: 'bold' }}>Common Details (Account Details)</h5>
+    <NavbarMain />
+    
     <Survey model={model} />
     <div style={{ textAlign: 'right', marginTop: '16px' }}>
       <button
@@ -57,7 +59,7 @@ export default function SurveyPreview() {
         style={{
           padding: '10px 20px',
           fontSize: '16px',
-          backgroundColor: 'green',
+          backgroundColor: 'black',
           color: '#fff',
           border: 'none',
           borderRadius: '6px',

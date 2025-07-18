@@ -40,7 +40,7 @@ export default function SurveyBuilder() {
         justifyContent: 'center',
       }}
     >
-      <h2 style={{ fontFamily: 'Inter', marginBottom: 16 }}>🛠️ SurveyJS Form Builder</h2>
+      
 
       {creatorReady && creatorRef.current && (
         <SurveyCreatorComponent creator={creatorRef.current} />
