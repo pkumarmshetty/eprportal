@@ -25,6 +25,7 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import FactoryIcon from '@mui/icons-material/Factory';
 import RecyclingIcon from '@mui/icons-material/Recycling';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import { useRouter } from 'next/navigation';
 
 const cardData = [
   { title: 'Registration', count: 123, icon: <HowToRegIcon fontSize="large" /> },
@@ -34,6 +35,7 @@ const cardData = [
 ];
 
 function Page() {
+    const router = useRouter();
   return (
     <AdminDashboard>
       <Box
@@ -120,7 +122,7 @@ function Page() {
               <TableCell sx={{ color: '#757575' }}>Private Ltd</TableCell>
               <TableCell sx={{ color: '#757575' }}>Pending</TableCell>
               <TableCell>
-                <Button size="small" variant="outlined">View</Button>
+                <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>
               </TableCell>
             </TableRow>
             <TableRow>
@@ -130,7 +132,7 @@ function Page() {
               <TableCell sx={{ color: '#757575' }}>LLP</TableCell>
               <TableCell sx={{ color: '#757575' }}>Approved</TableCell>
               <TableCell>
-                <Button size="small" variant="outlined">View</Button>
+                <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>
               </TableCell>
             </TableRow>
             <TableRow>
@@ -140,7 +142,7 @@ function Page() {
               <TableCell sx={{ color: '#757575' }}>Partnership</TableCell>
               <TableCell sx={{ color: '#757575' }}>Rejected</TableCell>
               <TableCell>
-                <Button size="small" variant="outlined">View</Button>
+                <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>
               </TableCell>
             </TableRow>
           </TableBody>

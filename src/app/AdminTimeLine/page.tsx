@@ -102,12 +102,12 @@ export default function VerificationPage() {
             ></iframe>
           </Box>
 
-          <Box mt={2} display="flex" justifyContent="space-between">
-            <Button variant="outlined">Mute</Button>
+          <Box mt={2} display="flex" justifyContent="flex-end">
+            {/* <Button variant="outlined">Mute</Button>
             <Button variant="contained" color="error">
               Leave Verification
-            </Button>
-            <Button variant="outlined">CC</Button>
+            </Button> */}
+<Button variant="outlined" onClick={() => window.location.href='/capture'}>capture</Button>
           </Box>
         </Box>
 
