@@ -1,47 +1,12 @@
-
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Survey } from 'survey-react-ui';
-import { Model } from 'survey-core';
+import React, { useState } from 'react';
 import DashboardComponent from '@/components/DashboardComponent';
 import Image from 'next/image';
+// import { useRouter } from 'next/router';
 
 export default function SurveyPreview() {
-  const [model, setModel] = useState<Model | null>(null);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('survey-schema');
-    console.log('🔍 Loaded survey schema:', stored);
-
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-
-        // ✅ Ensure it's an array and get the first schema
-        const schema = Array.isArray(parsed) ? parsed[0] : parsed;
-
-        const surveyModel = new Model(schema);
-
-        // Hide completed page and prevent auto-submit behavior
-        surveyModel.showNavigationButtons = false;
-        surveyModel.showCompletedPage = false;
-
-        surveyModel.onComplete.add((sender) => {
-          console.log('✅ Submitted Data:', sender.data);
-          sender.clear(); // reset form fields
-          sender.isCompleted = false; // keep showing form
-        });
-
-        setModel(surveyModel);
-      } catch (err) {
-        console.error('❌ Failed to parse stored survey JSON:', err);
-      }
-    }
-  }, []);
-
-  const handleSubmit = () => {
-    model?.doComplete();
-  };
+  const [showSuccess, setShowSuccess] = useState(false);
+  // const router = useRouter();
 
   const styles = {
     container: {
@@ -102,7 +67,6 @@ export default function SurveyPreview() {
     stepTextInactive: {
       color: '#999',
     },
-
     radioGroup: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -118,7 +82,6 @@ export default function SurveyPreview() {
       backgroundColor: 'transparent',
       fontSize: '16px',
     },
-
     cardNumber: {
       display: 'flex',
       alignItems: 'center',
@@ -148,9 +111,44 @@ export default function SurveyPreview() {
       float: 'right',
       cursor: 'pointer',
     },
+    modalOverlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 1000,
+    },
+    modal: {
+      backgroundColor: '#fff',
+      padding: '30px',
+      borderRadius: '12px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+      width: '400px',
+      textAlign: 'center',
+    },
+    modalHeading: {
+      fontSize: '22px',
+      fontWeight: 'bold',
+      marginBottom: '10px',
+    },
+    modalText: {
+      fontSize: '16px',
+      marginBottom: '20px',
+    },
+    modalButton: {
+      backgroundColor: '#000',
+      color: '#fff',
+      padding: '10px 20px',
+      border: 'none',
+      borderRadius: '6px',
+      cursor: 'pointer',
+    },
   };
-
-  if (!model) return <p>No survey data found in localStorage.</p>;
 
   return (
     <DashboardComponent>
@@ -162,20 +160,19 @@ export default function SurveyPreview() {
             {/* Left Section */}
             <div style={{ ...styles.section, ...styles.leftSection }}>
               <div style={styles.tracker}>
-                <div style={{ ...styles.step, ...styles.inactiveStep }}>
+                <div style={styles.step}>
                   <div style={styles.circleInactive}></div>
                   <span style={styles.stepTextInactive}>Payment</span>
                 </div>
-                <div style={{ ...styles.step, ...styles.activeStep }}>
+                <div style={styles.step}>
                   <div style={styles.circleActive}></div>
                   <span style={styles.stepTextActive}>Billing</span>
                 </div>
-                <div style={{ ...styles.step, ...styles.inactiveStep }}>
+                <div style={styles.step}>
                   <div style={styles.circleInactive}></div>
                   <span style={styles.stepTextInactive}>Confirmation</span>
                 </div>
               </div>
-
 
               <div>
                 <h3>Payment Method</h3>
@@ -222,13 +219,25 @@ export default function SurveyPreview() {
                 <div><strong>Total:</strong> ₹2150</div>
               </div>
 
-              <button style={styles.confirmBtn}>Confirm Payment</button>
+              <button style={styles.confirmBtn} onClick={() => setShowSuccess(true)}>
+                Confirm Payment
+              </button>
             </div>
           </div>
         </div>
 
+        {showSuccess && (
+          <div style={styles.modalOverlay}>
+            <div style={styles.modal}>
+              <h2 style={styles.modalHeading}>Payment Successful!</h2>
+              <p style={styles.modalText}>Registration is Completed. Verification is Pending.</p>
+              <button style={styles.modalButton}>
+                Go to Dashboard
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </DashboardComponent>
   );
 }
-
