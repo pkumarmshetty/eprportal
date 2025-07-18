@@ -5,9 +5,16 @@ import { Box, TableContainer, Paper, Table, TableHead, TableRow, TableCell, Tabl
 import React from 'react'
 
 function page() {
+  const [isRegistered, setIsRegistered] = React.useState(false);
   const temp = localStorage.getItem('isOneRegistered')
   console.log(temp)
-  const [isRegistered, setIsRegistered] = React.useState();
+
+  React.useEffect(() => {
+    const temp = localStorage.getItem('isOneRegistered');
+    console.log('LocalStorage isOneRegistered:', temp);
+    setIsRegistered(temp === 'true');
+  }, []);
+
   const cardTitles = [
     "E-Waste",
     "Plastic Waste",
@@ -143,7 +150,7 @@ function page() {
             ))}
           </div>
         </div>
-        {!isRegistered ? <h3>No Record Found</h3> : <Box sx={{ mt: 4 }}>
+        {!isRegistered === "true" ? <h3>No Record Found</h3> : <Box sx={{ mt: 4 }}>
           <h3 style={{ padding: '20px 0px', fontWeight: 'bold' }}>New Registration</h3>
           <TableContainer component={Paper}>
             <Table>
