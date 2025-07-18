@@ -55,14 +55,14 @@ export default function SurveyPreview() {
         style={{
           padding: '10px 20px',
           fontSize: '16px',
-          backgroundColor: '#1976d2',
+          backgroundColor: '#000000ff',
           color: '#fff',
           border: 'none',
           borderRadius: '6px',
           cursor: 'pointer',
         }}
       >
-        Submit
+       Make Payment for Signup
       </button>
     </div>
   </div>

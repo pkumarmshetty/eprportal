@@ -88,7 +88,7 @@ export default function WasteCategoryCards() {
               }}
               onClick={() => router.push('/FormViewPage2')}
             >
-              Review
+              Renew
             </Button>
 
           </div>
@@ -219,13 +219,13 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: 'lightgray',
-                color: '#000', // dark text for readability
+                backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
                 '&:hover': {
-                  backgroundColor: '#c0c0c0', // darker gray on hover
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
                 },
               }}
-              onClick={() => router.push('/TrackPage')}
+              onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
@@ -288,10 +288,10 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: '#2e7d32', // green background
+                backgroundColor: '#75a02bff', // olive green
                 color: 'white', // white text
                 '&:hover': {
-                  backgroundColor: '#1b5e20', // darker green on hover
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
                 },
               }}
               onClick={() => router.push('/FormViewPage2')}
