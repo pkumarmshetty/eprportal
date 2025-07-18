@@ -1,15 +1,19 @@
+'use client'
 import DashboardComponent from '@/components/DashboardComponent'
 import { Box, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 // import router from 'next/navigation';
 import React from 'react'
 
 function page() {
-const cardTitles = [
-  "E-Waste",
-  "Plastic Waste",
-  "Used Oil Management",
-  "Tire Waste Management",
-];
+  const temp = localStorage.getItem('isOneRegistered')
+  console.log(temp)
+  const [isRegistered, setIsRegistered] = React.useState();
+  const cardTitles = [
+    "E-Waste",
+    "Plastic Waste",
+    "Used Oil Management",
+    "Tire Waste Management",
+  ];
   const styles = {
     container: {
       fontFamily: 'Arial, sans-serif',
@@ -95,6 +99,7 @@ const cardTitles = [
   };
   return (
     <div>
+
       <DashboardComponent >
         <div style={styles.container}>
           <div style={styles.headerRow}>
@@ -138,7 +143,7 @@ const cardTitles = [
             ))}
           </div>
         </div>
-        <Box sx={{ mt: 4 }}>
+        {!isRegistered ? <h3>No Reford Found</h3> : <Box sx={{ mt: 4 }}>
           <h3 style={{ padding: '20px 0px', fontWeight: 'bold' }}>New Registration</h3>
           <TableContainer component={Paper}>
             <Table>
@@ -146,9 +151,10 @@ const cardTitles = [
                 <TableRow sx={{ backgroundColor: '#F5F5F5' }}>
                   <TableCell>Application ID</TableCell>
                   <TableCell>Application Type</TableCell>
-                  <TableCell>Created Date</TableCell>
                   <TableCell>Type of Company</TableCell>
-                  <TableCell>Current Status</TableCell>
+                  <TableCell>Created Date</TableCell>
+                  <TableCell>Compliance Date</TableCell>
+                  {/* <TableCell>EPR Target</TableCell> */}
                   <TableCell>Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -156,9 +162,10 @@ const cardTitles = [
                 <TableRow>
                   <TableCell sx={{ color: '#757575' }}>APP001</TableCell>
                   <TableCell sx={{ color: '#757575' }}>Registration</TableCell>
-                  <TableCell sx={{ color: '#757575' }}>2025-07-17</TableCell>
                   <TableCell sx={{ color: '#757575' }}>Private Ltd</TableCell>
-                  <TableCell sx={{ color: '#757575' }}>Pending</TableCell>
+                  <TableCell sx={{ color: '#757575' }}>2025-07-21</TableCell>
+                  <TableCell sx={{ color: '#757575' }}>2026-07-21</TableCell>
+                  {/* <TableCell sx={{ color: '#757575' }}>100kg</TableCell> */}
                   <TableCell>
                     <Button size="small" variant="outlined" >View</Button>
                   </TableCell>
@@ -166,7 +173,7 @@ const cardTitles = [
               </TableBody>
             </Table>
           </TableContainer>
-        </Box>
+        </Box>}
       </DashboardComponent>
 
     </div>
