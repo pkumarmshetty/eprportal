@@ -49,7 +49,7 @@ export default function WasteCategoryCards() {
                 borderRadius: '30px',
               }}
             />
-            <Typography fontWeight="bold" sx={{ mb: 1, position: 'relative', top: '-90px', zIndex: 1 }}>
+            <Typography fontWeight="bold" sx={{ mb: 1, position: 'relative', top: '-140px', zIndex: 1 }}>
               E- Waste Management
             </Typography>
             <Button

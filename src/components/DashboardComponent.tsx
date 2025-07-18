@@ -26,7 +26,7 @@ export default function DashboardComponent({ children }: { children: React.React
   const router = useRouter();
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex',zoom: 0.8 }}>
       <CssBaseline />
       {/* <AppBar
         position="fixed"
@@ -168,7 +168,7 @@ export default function DashboardComponent({ children }: { children: React.React
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, backgroundColor: '#F9F9F9', p: 3, minHeight: '100vh' }}
+        sx={{ flexGrow: 1, backgroundColor: '#F9F9F9', p: 3, minHeight: '100vh',zoom:0.8 }}
       >
         <Toolbar />
         {children}
