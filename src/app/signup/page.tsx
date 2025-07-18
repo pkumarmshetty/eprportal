@@ -142,7 +142,7 @@ export default function SurveyPreview() {
           </Typography>
           {redirectTriggered && (
             <Typography mt={2} color="text.secondary">
-              Redirecting to homepage...
+              Redirecting to login page in 2 seconds...
             </Typography>
           )}
         </DialogContent>
