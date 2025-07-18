@@ -124,7 +124,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
             </ListItem>
               <ListItem disablePadding >
               <ListItemButton
-                onClick={() => router.push('/FlowDashboard')}
+                onClick={() => router.push('/Registrations')}
                 sx={{
                   borderRadius: '30px',
                   mx: 1,
@@ -143,9 +143,9 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 <ListItemText primary={"Registrations"} />
               </ListItemButton>
             </ListItem>
-           {/* <ListItem disablePadding >
+           <ListItem disablePadding >
               <ListItemButton
-                onClick={() => router.push('/WasteCategory')}
+                onClick={() => router.push('/RemoteVerification')}
                 sx={{
                   borderRadius: '30px',
                   mx: 1,
@@ -161,9 +161,9 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 <ListItemIcon>
                   <AdjustIcon />
                 </ListItemIcon>
-                <ListItemText primary={"Waste Category"} />
+                <ListItemText primary={"Remote Verification"} />
               </ListItemButton>
-            </ListItem> */}
+            </ListItem>
         </List>
       </Drawer>
 
