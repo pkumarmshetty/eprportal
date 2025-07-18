@@ -52,10 +52,16 @@ const NavbarMain = () => {
   const handlelogin= () => {
   console.log(email, password);
   if(email==="admin" && password==="admin") {
-    window.location.href = '/FlowDashboard'; // Redirect to home page
+    const temp = localStorage.getItem('isOneRegistered')
+    if(temp===true) {
+    window.location.href = '/FlowDashboard';
+    }else{
+      window.location.href = '/UserDashboard';
+    } // Redirect to home page
   }
   if(email==="user" && password==="user") {
-    window.location.href = '/UserDashboard'; // Redirect to home page
+
+    window.location.href = '/WasteCategory'; // Redirect to home page
   }
   if(email==="editor" && password==="editor") {
     window.location.href = '/FormBuilderPage'; // Redirect to home page

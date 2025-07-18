@@ -9,7 +9,7 @@ function page() {
         'Plastic Waste Management',
         'Used Oil Management',
         'Tyre Waste Management',
-        
+
     ];
     const [category, setCategory] = useState('');
     return (
@@ -19,7 +19,7 @@ function page() {
                     <br></br>
                     <img style={{ zoom: '0.7' }} height="50%" width="98%" src="salesimg2.svg" />
                 </div>
-                <Box sx={{ width: 300, mt: 4 }}>
+                <Box sx={{ width: 500, mt: 4 }}>
                     <FormControl fullWidth>
                         <InputLabel id="plastic-category-label">Plastic Category</InputLabel>
                         <Select
