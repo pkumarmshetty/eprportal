@@ -19,7 +19,7 @@ export default function SurveyBuilder() {
       console.log('📝 Survey JSON:', json);
 
       // ✅ Save to localStorage (overwrite existing)
-      localStorage.setItem('survey-schemass', JSON.stringify(json));
+      localStorage.setItem('survey-schemaRegi', JSON.stringify(json));
 
       callback(saveNo, true);
     };
