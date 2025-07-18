@@ -122,7 +122,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 <ListItemText primary={"Dashboard"} />
               </ListItemButton>
             </ListItem>
-             {/* <ListItem disablePadding >
+              <ListItem disablePadding >
               <ListItemButton
                 onClick={() => router.push('/FlowDashboard')}
                 sx={{
@@ -143,7 +143,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 <ListItemText primary={"Registrations"} />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding >
+           {/* <ListItem disablePadding >
               <ListItemButton
                 onClick={() => router.push('/WasteCategory')}
                 sx={{
