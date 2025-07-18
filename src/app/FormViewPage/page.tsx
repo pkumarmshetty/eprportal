@@ -43,7 +43,7 @@ export default function SurveyPreview() {
     model?.doComplete();
   };
 
-  if (!model) return <p>No survey data found in localStorage.</p>;
+  if (!model) return <p></p>;
 
   return (
    <DashboardComponent>

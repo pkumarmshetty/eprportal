@@ -278,7 +278,7 @@ export default function SurveyPreview() {
             <button style={styles.saveButton}>Save</button>
 <button
   style={styles.nextButton}
-  onClick={() => (window.location.href = '/WasteCategoryFinal')}
+  onClick={() => (window.location.href = '/TrackPage')}
 >
   Next
 </button>

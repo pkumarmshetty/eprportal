@@ -182,8 +182,9 @@ function Page() {
                 />
 
             </div>
-
-
+             <div>
+                <Button>Download Certificate</Button>
+             </div>
 
 
         </DashboardComponent>

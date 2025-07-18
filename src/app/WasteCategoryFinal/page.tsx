@@ -117,19 +117,20 @@ export default function WasteCategoryCards() {
             <Typography fontWeight="bold" sx={{ position: 'absolute', top: 16, left: 16, zIndex: 1 }}>
               Plastic Waste Management
             </Typography>
-            <Button
+             <Button
               variant="contained"
-              color="error"
+              color="success"
               size="small"
               sx={{
                 position: 'absolute',
-                top: 16,
-                right: 16,
+                top: '16px',
+                right: '16px',
                 textTransform: 'none',
                 zIndex: 1,
               }}
+
             >
-              Not Registered
+              Registered
             </Button>
             <Button
               variant="contained"

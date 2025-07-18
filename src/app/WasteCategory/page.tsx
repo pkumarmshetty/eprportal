@@ -26,7 +26,7 @@ export default function WasteCategoryCards() {
             style={{
               flex: '0 0 calc(50% - 8px)',
               height: '350px',
-              backgroundImage: 'url(https://i.ibb.co/pBSQjpdp/p1.jpg)',
+              backgroundImage: 'url(https://i.ibb.co/3Jj9HjM/Rectangle-13.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               color: '#fff',
@@ -89,7 +89,7 @@ export default function WasteCategoryCards() {
             style={{
               flex: '0 0 calc(50% - 8px)',
               height: '350px',
-              backgroundImage: 'url(https://i.ibb.co/zVyrc6jq/p2.jpg)',
+              backgroundImage: 'url(https://i.ibb.co/KpyTpKcs/Rectangle-13-1.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               color: '#fff',
@@ -149,7 +149,7 @@ export default function WasteCategoryCards() {
             style={{
               flex: '0 0 calc(50% - 8px)',
               height: '350px',
-              backgroundImage: 'url(https://i.ibb.co/VYMXchkq/p3.jpg)',
+              backgroundImage: 'url(https://i.ibb.co/Z66tF7Bm/Rectangle-13-2.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               color: '#fff',
@@ -208,7 +208,7 @@ export default function WasteCategoryCards() {
             style={{
               flex: '0 0 calc(50% - 8px)',
               height: '350px',
-              backgroundImage: 'url(https://i.ibb.co/84DLGQy2/p4.jpg)',
+              backgroundImage: 'url(https://i.ibb.co/Z64Y2jb6/Rectangle-13-3.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               color: '#fff',

@@ -46,6 +46,7 @@ const NavbarMain = () => {
 
   const handleNavClick = (item: string) => {
     if (item === 'Login') setLoginOpen(true);
+    if(item === 'Sign Up') window.location.href = '/FormViewPage';
   };
 
   const handlelogin= () => {
@@ -55,6 +56,12 @@ const NavbarMain = () => {
   }
   if(email==="user" && password==="user") {
     window.location.href = '/UserDashboard'; // Redirect to home page
+  }
+  if(email==="editor" && password==="editor") {
+    window.location.href = '/FormBuilderPage'; // Redirect to home page
+  }
+  if(email==="editor1" && password==="editor1") {
+    window.location.href = '/FormBuilderPage2'; // Redirect to home page
   }
 }
 

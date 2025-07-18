@@ -10,7 +10,7 @@ export default function SurveyPreview() {
     const [model, setModel] = useState<Model | null>(null);
 
     useEffect(() => {
-        const stored = localStorage.getItem('survey-schema');
+        const stored = localStorage.getItem('survey-schemass');
         console.log('🔍 Loaded survey schema:', stored);
 
         if (stored) {
