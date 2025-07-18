@@ -142,7 +142,24 @@ function Page() {
                     </Box>
                 </Box>
             </Box>
+            
+
             <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: '20px',
+                }}
+            >
+                <img
+                    src="https://i.ibb.co/v6W4JHwS/tracker.png"
+                    alt="tracker"
+                    style={{ maxWidth: '90vw', height: 'auto' }}
+                />
+
+            </div>
+             <div
                 style={{
                     backgroundColor: '#2e7d32', // Green color (Material UI success)
                    width:'300px',             // Set desired height
@@ -166,25 +183,6 @@ function Page() {
                     Start Remote Verification
                 </a>
             </div>
-
-            <div
-                style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginTop: '20px',
-                }}
-            >
-                <img
-                    src="https://i.ibb.co/v6W4JHwS/tracker.png"
-                    alt="tracker"
-                    style={{ maxWidth: '90vw', height: 'auto' }}
-                />
-
-            </div>
-             <div>
-                <Button>Download Certificate</Button>
-             </div>
 
 
         </DashboardComponent>

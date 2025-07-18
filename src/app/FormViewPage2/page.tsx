@@ -154,11 +154,13 @@ export default function SurveyPreview() {
                     style={{
                         padding: '10px 20px',
                         fontSize: '16px',
-                        backgroundColor: '#1976d2',
+                        backgroundColor: 'green',
                         color: '#fff',
                         border: 'none',
                         borderRadius: '6px',
                         cursor: 'pointer',
+                        display:'flex',
+                        justifyContent:'flex-end'
                     }}
                 >
                     Submit

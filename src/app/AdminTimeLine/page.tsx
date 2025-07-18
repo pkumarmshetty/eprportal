@@ -30,7 +30,7 @@ export default function VerificationPage() {
   };
 
   return (
-    <Box sx={{ height: '100vh', overflow: 'hidden',padding:'10px' }}>
+    <Box sx={{ height: '100vh', overflow: 'hidden',padding:'10px',zoom:0.8 }}>
       {/* AppBar */}
       <AppBar
         position="fixed"

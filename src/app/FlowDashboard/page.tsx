@@ -38,6 +38,10 @@ function Page() {
     const router = useRouter();
   return (
     <AdminDashboard>
+      <br>
+</br>
+<h2>Dashboard</h2>
+<br></br>
       <Box
         sx={{
           display: 'flex',

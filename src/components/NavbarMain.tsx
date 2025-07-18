@@ -46,7 +46,7 @@ const NavbarMain = () => {
 
   const handleNavClick = (item: string) => {
     if (item === 'Login') setLoginOpen(true);
-    if(item === 'Sign Up') window.location.href = '/FormViewPage';
+    if(item === 'Sign Up') window.location.href = '/signup';
   };
 
   const handlelogin= () => {
