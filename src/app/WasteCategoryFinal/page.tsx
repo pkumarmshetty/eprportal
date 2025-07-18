@@ -54,19 +54,23 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="success"
               size="small"
               sx={{
                 position: 'absolute',
-                top: '16px',
-                right: '16px',
+                top: 16,
+                right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#e6f4ea', // very light green
+                color: '#2e7d32', // green text
+                '&:hover': {
+                  backgroundColor: '#d0ebdc', // slightly darker on hover
+                },
               }}
-
             >
               Registered
             </Button>
+
             <Button
               variant="contained"
               size="small"
@@ -119,7 +123,6 @@ export default function WasteCategoryCards() {
             </Typography>
              <Button
               variant="contained"
-              color="success"
               size="small"
               sx={{
                 position: 'absolute',
@@ -127,14 +130,19 @@ export default function WasteCategoryCards() {
                 right: '16px',
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#ebe860ff', // very light green
+                color: '#4f2b07ff', // green text
+                '&:hover': {
+                  backgroundColor: '#d0ebdc', // slightly darker on hover
+                },
               }}
 
             >
-              Registered
+              Processing
             </Button>
+
             <Button
               variant="contained"
-              color="success"
               size="small"
               sx={{
                 position: 'absolute',
@@ -142,11 +150,17 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: 'white',
+                color: 'black',
+                '&:hover': {
+                  backgroundColor: '#f0f0f0', // light gray on hover
+                },
               }}
               onClick={() => router.push('/FormViewPage2')}
             >
-              Register Now
+              Track Status
             </Button>
+
           </div>
 
           {/* Card 3 */}
@@ -179,7 +193,6 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="error"
               size="small"
               sx={{
                 position: 'absolute',
@@ -187,10 +200,16 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f', // red text
+                '&:hover': {
+                  backgroundColor: '#f9d7d5', // slightly darker on hover
+                },
               }}
             >
               Not Registered
             </Button>
+
             <Button
               variant="contained"
               size="small"
@@ -208,7 +227,7 @@ export default function WasteCategoryCards() {
               }}
               onClick={() => router.push('/TrackPage')}
             >
-              Track Status
+              Register Now
             </Button>
 
           </div>
@@ -243,7 +262,6 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="error"
               size="small"
               sx={{
                 position: 'absolute',
@@ -251,13 +269,18 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f', // red text
+                '&:hover': {
+                  backgroundColor: '#f9d7d5', // slightly darker on hover
+                },
               }}
             >
               Not Registered
             </Button>
+
             <Button
               variant="contained"
-              color="success"
               size="small"
               sx={{
                 position: 'absolute',
@@ -265,11 +288,17 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#2e7d32', // green background
+                color: 'white', // white text
+                '&:hover': {
+                  backgroundColor: '#1b5e20', // darker green on hover
+                },
               }}
               onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
+
           </div>
         </div>
       </Box>

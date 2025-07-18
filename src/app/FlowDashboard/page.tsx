@@ -139,7 +139,7 @@ function Page() {
               <TableCell sx={{ color: '#757575' }}>APP003</TableCell>
               <TableCell sx={{ color: '#757575' }}>Recycler</TableCell>
               <TableCell sx={{ color: '#757575' }}>2025-07-15</TableCell>
-              <TableCell sx={{ color: '#757575' }}>Partnership</TableCell>
+              <TableCell sx={{ color: '#757575' }}>Pagenership</TableCell>
               <TableCell sx={{ color: '#757575' }}>Rejected</TableCell>
               <TableCell>
                 <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>

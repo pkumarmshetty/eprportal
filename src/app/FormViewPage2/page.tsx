@@ -98,7 +98,7 @@ export default function SurveyPreview() {
                         cursor: 'pointer',
                     }}
                 >
-                    Part 1
+                    Page A
                 </button>
 
                 <button
@@ -112,7 +112,7 @@ export default function SurveyPreview() {
                         cursor: 'pointer',
                     }}
                 >
-                    Part 2
+                    Page B
                 </button>
 
                 <button
@@ -126,7 +126,7 @@ export default function SurveyPreview() {
                         cursor: 'pointer',
                     }}
                 >
-                    Part 3
+                    Page C
                 </button>
 
                 <button
@@ -140,7 +140,7 @@ export default function SurveyPreview() {
                         cursor: 'pointer',
                     }}
                 >
-                    Part 4
+                    Page D
                 </button>
 
             </div>
