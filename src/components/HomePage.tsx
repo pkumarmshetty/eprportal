@@ -111,7 +111,7 @@ const HomePage = () => {
           >
             <div
               style={{
-                fontFamily: 'Inter',
+                // fontFamily: 'Inter',
                 fontWeight: 700,
                 fontSize: '22px',
                 lineHeight: '120%',
@@ -122,9 +122,9 @@ const HomePage = () => {
             </div>
             <div
               style={{
-                fontFamily: 'Inter',
+                // fontFamily: 'Inter',
                 fontWeight: 600,
-                fontSize: '71px',
+                fontSize: '50px',
                 lineHeight: '120%',
                 color: '#fff',
                 maxWidth: '80%',
@@ -142,7 +142,7 @@ const HomePage = () => {
               alignItems: 'center',
               flexDirection: 'column',
               justifyContent: 'center',
-              fontFamily: 'Inter',
+              // fontFamily: 'Inter',
               fontWeight: 600,
               fontSize: '36px',
               lineHeight: '120%',

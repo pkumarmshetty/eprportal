@@ -34,18 +34,19 @@ export default function SurveyPreview() {
         surveyModel.showCompletedPage = false;
 
         const autofillData = {
-          question1: 'ABC Pvt Ltd',
-          question2: 'ABC Brand',
+          question1: 'Pavan Pvt Ltd',
+          question2: 'Pavan Brand',
           question3: 'Manufacturing',
           question4: 'Private Limited',
-          question5: '123 Industrial Area, Bangalore',
+          question5: 'Industrial Area, Bangalore',
           question6: 'ABCDE1234F',
           question7: 'U12345KA2021PTC123456',
           question8: 'John Doe - Director',
           question9: '9876543210',
           question10: 'ABCDE1234F',
-          email: 'registereduser@example.com',
-          question19: 'cyxdafndj'
+            question16: 'shaivik@email.com',
+          question17: "******",
+          question19: '24AAACC1206D1ZM'
         };
 
         const filledFields = new Set();
@@ -89,7 +90,7 @@ export default function SurveyPreview() {
     if (model) {
       model.doComplete();
 
-      const email = model.data.email || model.data.question10 || 'user@example.com';
+      const email = model.data.email || model.data.question10 || 'pavan@gmail.com';
       setRegisteredEmail(email);
       setDialogOpen(true);
     }
@@ -149,7 +150,7 @@ export default function SurveyPreview() {
         </DialogContent>
         <DialogActions>
           {!redirectTriggered && (
-            <Button variant="contained" onClick={handleOkay}>
+            <Button variant="contained" sx={{color:'white',backgroundColor:'black'}} onClick={handleOkay}>
               Okay
             </Button>
           )}

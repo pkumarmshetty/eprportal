@@ -84,7 +84,7 @@ const NavbarMain = () => {
         sx={{
           backgroundColor: 'white',
           borderBottom: '1px solid #DDDDDD',
-          height: '100px',
+          height: '70px',
           justifyContent: 'center',
         }}
       >
@@ -146,10 +146,10 @@ const NavbarMain = () => {
   fullWidth
   PaperProps={{
     sx: {
-      borderRadius: '16px',
+      borderRadius: '10px',
       position: 'absolute',
-      right: 200,
-      top: 120,
+      right: 10,
+      top: 110,
       m: 0,
       zoom:'0.8'
     },
