@@ -111,7 +111,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon   fontSize="large" />
+                                <CheckCircleIcon fontSize="large" />
                                 <Typography fontWeight="bold">Step 3</Typography>
                                 <Typography fontSize="small">Verification Done</Typography>
                             </Box>
@@ -134,7 +134,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon  fontSize="large" />
+                                <CheckCircleIcon fontSize="large" />
                                 <Typography fontWeight="bold">Step 4</Typography>
                                 <Typography fontSize="small">Approved</Typography>
                             </Box>
@@ -142,14 +142,14 @@ function Page() {
                     </Box>
                 </Box>
             </Box>
-             <div
+            <div
                 style={{
                     backgroundColor: '#2e7d32', // Green color (Material UI success)
-                   width:'300px',             // Set desired height
+                    width: '300px',             // Set desired height
                     display: 'flex',             // Center the link
                     justifyContent: 'center',
                     alignItems: 'center',
-                   cursor: 'pointer'     
+                    cursor: 'pointer'
                 }}
             >
                 <a
@@ -184,6 +184,14 @@ function Page() {
             </div>
 
 
+           {/* <Button
+  variant="contained"
+  onClick={() => {
+    window.open("https://i.ibb.co/Z64Y2jb/Rectangle-13-3.png", "_blank", "noopener,noreferrer");
+  }}
+>
+  Open Certificate
+</Button> */}
 
 
         </DashboardComponent>
