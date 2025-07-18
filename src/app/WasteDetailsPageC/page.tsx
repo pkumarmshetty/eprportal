@@ -5,6 +5,12 @@ import DashboardComponent from '@/components/DashboardComponent';
 
 export default function SurveyPreview() {
 
+  const onClickSubmit = () => {
+    localStorage.setItem('isOneRegistered', 'true')
+    window.location.href = '/WasteCategoryFinal'
+
+  }
+
   const styles = {
     page: {
       fontFamily: 'Arial, sans-serif',
@@ -150,7 +156,7 @@ export default function SurveyPreview() {
           <button
             style={{
               padding: '10px 20px',
-              backgroundColor: '#9CBC4C',
+              backgroundColor: 'gray',
               color: '#000000',
               border: 'none',
               borderRadius: '6px',
@@ -164,7 +170,7 @@ export default function SurveyPreview() {
           <button
             style={{
               padding: '10px 20px',
-              backgroundColor: 'gray',
+              backgroundColor: '#9CBC4C',
               color: '#000000',
               border: 'none',
               borderRadius: '6px',
@@ -239,9 +245,9 @@ export default function SurveyPreview() {
             <button style={styles.saveButton}>Save</button>
 <button
   style={styles.nextButton}
-  onClick={() => (window.location.href = '/WasteCategoryFinal')}
+  onClick={() => (onClickSubmit())}
 >
-  Next
+  Submit
 </button>
           </div>
         </div>

@@ -61,33 +61,33 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: '#e6f4ea', // very light green
-                color: '#2e7d32', // green text
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f', // red text
                 '&:hover': {
-                  backgroundColor: '#d0ebdc', // slightly darker on hover
+                  backgroundColor: '#f9d7d5', // slightly darker on hover
                 },
               }}
             >
-              Registered
+              Not Registered
             </Button>
             <Button
               variant="contained"
               size="small"
               sx={{
                 position: 'absolute',
-                bottom: '16px',
-                left: '16px',
+                bottom: 16,
+                left: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: 'lightgray',
-                color: '#000',
+                backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
                 '&:hover': {
-                  backgroundColor: '#c0c0c0', // slightly darker on hover
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
                 },
               }}
               onClick={() => router.push('/FormViewPage2')}
             >
-              Renew
+              Register Now
             </Button>
           </div>
 
