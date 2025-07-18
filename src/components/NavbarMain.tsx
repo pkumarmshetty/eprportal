@@ -51,7 +51,7 @@ const NavbarMain = () => {
   const handlelogin= () => {
   console.log(email, password);
   if(email==="admin" && password==="admin") {
-    window.location.href = '/Admin'; // Redirect to home page
+    window.location.href = '/FlowDashboard'; // Redirect to home page
   }
   if(email==="user" && password==="user") {
     window.location.href = '/UserDashboard'; // Redirect to home page
@@ -133,6 +133,7 @@ const NavbarMain = () => {
       right: 200,
       top: 120,
       m: 0,
+      zoom:'0.8'
     },
   }}
 >

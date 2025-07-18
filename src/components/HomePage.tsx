@@ -33,7 +33,7 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <div style={{zoom: '0.8'}}>
       <Navbar />
       <NavbarMain />
 
@@ -64,24 +64,54 @@ const HomePage = () => {
       <div
         style={{
           maxWidth: '80vw',
-          margin: '30 auto',
+          margin: '30px auto', // Proper vertical & horizontal centering
           padding: '24px',
           textAlign: 'center',
         }}
       >
-        <h2 style={{ marginBottom: '26px', fontWeight: 'bold',margin:'20px 20px' }}>EPR Portal for Plastic Packaging</h2>
+        <h2
+          style={{
+            marginBottom: '26px',
+            fontWeight: 'bold',
+            margin: '20px 0', // uniform vertical spacing
+          }}
+        >
+          EPR Portal for Plastic Packaging
+        </h2>
+
         <p style={{ textAlign: 'justify' }}>
-          Extended Producers Responsibility (EPR) regime is under implementation in Plastic Waste Management Rules, 2016, according to which it is the responsibility of Producers, Importers and Brand-owners to ensure processing of their plastic packaging waste through recycling, re-use or end of life disposal (such as co-processing/Waste-to-energy/Plastic-to-oil/roadmaking/industrial-composting). In order to streamline implementation process of EPR, the Ministry of Environment, Forest and Climate Change, Government of India, in its fourth Amendment to the Plastic Waste Management Rules, dated February 16, 2022, notified ‘Guidelines on Extended Producer Responsibility for Plastic Packaging’ in the Schedule II of the Rules.
-
-          As per these guidelines, Producers, Importers and Brand Owners (PIBOs) shall have to register through the online centralized portal developed by the Central Pollution Control Board (CPCB). Accordingly, this portal has been developed to register PIBOs who are operating in more than two States with CPCB and those operating in one or two States/UTs shall be registered with the concerned State Pollution Control Boards (SPCBs).
-
-          PWPs shall also have to register with the concerned SPCB/PCC in accordance with the provisions of the Section 13(3) of the Plastic Waste Management Rules, 2016 on this centralized portal developed by CPCB.
-
-          The EPR Portal for Plastic Packaging provides provision for registration of PIBOs/ PWPS in accordance with the notified EPR Guidelines. The portal will help in improving accountability, traceability and transparency of fulfilment of EPR Obligations.
-
-          The portal is planned to have seven modules, which allows registration of PWPs and PIBOs, issue certificates by PWPs & exchange of credits, allows real-time monitoring of transactions between PIBOs and PWPs, allows levy of environmental compensation and provides system-generated reports and facilitates filing of annual returns for the stakeholders. Presently three modules of EPR portal “Registration of PIBOs”, “Registration of PWPs” and “Generation & Transfer of EPR Certificates” are operational. The remaining modules shall be integrated shortly.
+          Extended Producers Responsibility (EPR) regime is under implementation in Plastic Waste
+          Management Rules, 2016, according to which it is the responsibility of Producers, Importers and
+          Brand-owners to ensure processing of their plastic packaging waste through recycling, re-use or
+          end of life disposal (such as co-processing/Waste-to-energy/Plastic-to-oil/roadmaking/industrial-composting).
+          In order to streamline implementation process of EPR, the Ministry of Environment, Forest and
+          Climate Change, Government of India, in its fourth Amendment to the Plastic Waste Management
+          Rules, dated February 16, 2022, notified ‘Guidelines on Extended Producer Responsibility for Plastic
+          Packaging’ in the Schedule II of the Rules.
+          <br /><br />
+          As per these guidelines, Producers, Importers and Brand Owners (PIBOs) shall have to register
+          through the online centralized portal developed by the Central Pollution Control Board (CPCB).
+          Accordingly, this portal has been developed to register PIBOs who are operating in more than two
+          States with CPCB and those operating in one or two States/UTs shall be registered with the
+          concerned State Pollution Control Boards (SPCBs).
+          <br /><br />
+          PWPs shall also have to register with the concerned SPCB/PCC in accordance with the provisions of
+          the Section 13(3) of the Plastic Waste Management Rules, 2016 on this centralized portal developed
+          by CPCB.
+          <br /><br />
+          The EPR Portal for Plastic Packaging provides provision for registration of PIBOs/ PWPS in
+          accordance with the notified EPR Guidelines. The portal will help in improving accountability,
+          traceability and transparency of fulfilment of EPR Obligations.
+          <br /><br />
+          The portal is planned to have seven modules, which allows registration of PWPs and PIBOs, issue
+          certificates by PWPs & exchange of credits, allows real-time monitoring of transactions between
+          PIBOs and PWPs, allows levy of environmental compensation and provides system-generated reports
+          and facilitates filing of annual returns for the stakeholders. Presently three modules of EPR portal
+          “Registration of PIBOs”, “Registration of PWPs” and “Generation & Transfer of EPR Certificates” are
+          operational. The remaining modules shall be integrated shortly.
         </p>
       </div>
+
       <footer
         className="footer-distributed"
         style={{
@@ -197,7 +227,7 @@ const HomePage = () => {
 
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 

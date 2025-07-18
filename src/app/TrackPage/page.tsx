@@ -144,10 +144,34 @@ function Page() {
             </Box>
             <div
                 style={{
+                    backgroundColor: '#2e7d32', // Green color (Material UI success)
+                    height: '80px',              // Set desired height
+                    display: 'flex',             // Center the link
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
+                <a
+                    href="https://8x8.vc/vpaas-magic-cookie-cf5217ce8a4048d89baa3f88ab649551/eprverification"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                        color: 'white',
+                        fontWeight: 'bold',
+                        textDecoration: 'none',
+                        fontSize: '16px',
+                    }}
+                >
+                    Start Remote Verification
+                </a>
+            </div>
+
+            <div
+                style={{
                     width: '100%',
                     display: 'flex',
                     justifyContent: 'center',
-                    marginTop: '-20px',
+                    marginTop: '20px',
                 }}
             >
                 <img
@@ -157,10 +181,7 @@ function Page() {
                 />
 
             </div>
-            
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Button sx={{ background: 'lightgreen' }}>View My Form</Button>
-                </div>
+
 
 
 
