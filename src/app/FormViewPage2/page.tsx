@@ -145,31 +145,48 @@ export default function SurveyPreview() {
 
             </div>
             <div>
-<Survey model={model} />
-<button
-                    onClick={() => {
-                        handleSubmit();
-                        window.location.href = '/WasteDetailsPageB';
-                    }}
-                    style={{
-                        padding: '10px 20px',
-                        fontSize: '16px',
-                        backgroundColor: 'green',
-                        color: '#fff',
-                        border: 'none',
-                        borderRadius: '6px',
-                        cursor: 'pointer',
-                        display:'flex',
-                        justifyContent:'flex-end'
-                    }}
-                >
-                    Submit
-                </button>
+                <Survey model={model} />
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    gap: '10px',
+                    marginTop: '20px'
+                }}>
+                    <button
+                        style={{
+                            padding: '10px 20px',
+                            fontSize: '16px',
+                            backgroundColor: '#ccc',
+                            color: '#000',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Save
+                    </button>
+
+                    <button
+                        onClick={() => window.location.href = '/WasteDetailsPageB'}
+                        style={{
+                            padding: '10px 20px',
+                            fontSize: '16px',
+                            backgroundColor: 'black',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Next
+                    </button>
+                </div>
+
             </div>
- 
+
             <div style={{ textAlign: 'right', marginTop: '16px' }}>
-               
-                
+
+
 
             </div>
 
