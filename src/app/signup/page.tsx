@@ -10,35 +10,71 @@ import NavbarMain from '@/components/NavbarMain';
 export default function SurveyPreview() {
   const [model, setModel] = useState<Model | null>(null);
 
-  useEffect(() => {
-    const stored = localStorage.getItem('survey-schema');
-    console.log('🔍 Loaded survey schema:', stored);
+useEffect(() => {
+  const stored = localStorage.getItem('survey-schema');
+  console.log('🔍 Loaded survey schema:', stored);
 
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      const schema = Array.isArray(parsed) ? parsed[0] : parsed;
+      const surveyModel = new Model(schema);
 
-        // ✅ Ensure it's an array and get the first schema
-        const schema = Array.isArray(parsed) ? parsed[0] : parsed;
+      surveyModel.showNavigationButtons = false;
+      surveyModel.showCompletedPage = false;
 
-        const surveyModel = new Model(schema);
+      const autofillData = {
+        question1: 'ABC Pvt Ltd',
+        question2: 'ABC Brand',
+        question3: 'Manufacturing',
+        question4: 'Private Limited',
+        question5: '123 Industrial Area, Bangalore',
+        question6: 'ABCDE1234F',
+        question7: 'U12345KA2021PTC123456',
+        question8: 'John Doe - Director',
+        question9: '9876543210',
+        question10: 'ABCDE1234F',
+      };
 
-        // Hide completed page and prevent auto-submit behavior
-        surveyModel.showNavigationButtons = false;
-        surveyModel.showCompletedPage = false;
+      const filledFields = new Set();
 
-        surveyModel.onComplete.add((sender) => {
-          console.log('✅ Submitted Data:', sender.data);
-          sender.clear(); // reset form fields
-          sender.isCompleted = false; // keep showing form
-        });
+      surveyModel.onAfterRenderQuestion.add((survey, options) => {
+        const input = options.htmlElement.querySelector('input, textarea');
+        if (input && options.question.name in autofillData) {
+          input.addEventListener('focus', () => {
+            const name = options.question.name;
 
-        setModel(surveyModel);
-      } catch (err) {
-        console.error('❌ Failed to parse stored survey JSON:', err);
-      }
+            if (!filledFields.has(name)) {
+              surveyModel.setValue(name, autofillData[name]);
+              filledFields.add(name);
+
+              // If third field is focused, autofill all remaining
+              if (name === 'question3') {
+                Object.entries(autofillData).forEach(([key, value]) => {
+                  if (!filledFields.has(key)) {
+                    surveyModel.setValue(key, value);
+                    filledFields.add(key);
+                  }
+                });
+              }
+            }
+          });
+        }
+      });
+
+      surveyModel.onComplete.add((sender) => {
+        console.log('✅ Submitted Data:', sender.data);
+        sender.clear();
+        sender.isCompleted = false;
+      });
+
+      setModel(surveyModel);
+    } catch (err) {
+      console.error('❌ Failed to parse stored survey JSON:', err);
     }
-  }, []);
+  }
+}, []);
+
 
   const handleSubmit = () => {
     window.location.href = '/';
@@ -66,7 +102,7 @@ export default function SurveyPreview() {
           cursor: 'pointer',
         }}
       >
-        Submit
+        Sign Up
       </button>
     </div>
   </div>
