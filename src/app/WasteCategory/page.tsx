@@ -5,7 +5,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 export default function WasteCategoryCards() {
-     const router = useRouter();
+  const router = useRouter();
   return (
     <DashboardComponent>
       <Box>
@@ -54,22 +54,24 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="error"
               size="small"
               sx={{
                 position: 'absolute',
-                top: '16px',
-                right: '16px',
+                top: 16,
+                right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#e6f4ea', // very light green
+                color: '#2e7d32', // green text
+                '&:hover': {
+                  backgroundColor: '#d0ebdc', // slightly darker on hover
+                },
               }}
-              
             >
-              Not Registered
+              Registered
             </Button>
             <Button
               variant="contained"
-              color="primary"
               size="small"
               sx={{
                 position: 'absolute',
@@ -77,10 +79,15 @@ export default function WasteCategoryCards() {
                 left: '16px',
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: 'lightgray',
+                color: '#000',
+                '&:hover': {
+                  backgroundColor: '#c0c0c0', // slightly darker on hover
+                },
               }}
-              onClick={()=>router.push('/FormViewPage2')}
+              onClick={() => router.push('/FormViewPage2')}
             >
-              Register Now
+              Renew
             </Button>
           </div>
 
@@ -114,7 +121,6 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="error"
               size="small"
               sx={{
                 position: 'absolute',
@@ -122,14 +128,17 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f', // red text
+                '&:hover': {
+                  backgroundColor: '#f9d7d5', // slightly darker on hover
+                },
               }}
-              onClick={()=>router.push('/FormViewPage2')}
             >
               Not Registered
             </Button>
             <Button
               variant="contained"
-              color="primary"
               size="small"
               sx={{
                 position: 'absolute',
@@ -137,11 +146,17 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
+                '&:hover': {
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
+                },
               }}
-              onClick={()=>router.push('/FormViewPage2')}
+              onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
+
           </div>
 
           {/* Card 3 */}
@@ -174,7 +189,6 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="error"
               size="small"
               sx={{
                 position: 'absolute',
@@ -182,13 +196,17 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f', // red text
+                '&:hover': {
+                  backgroundColor: '#f9d7d5', // slightly darker on hover
+                },
               }}
             >
               Not Registered
             </Button>
             <Button
               variant="contained"
-              color="primary"
               size="small"
               sx={{
                 position: 'absolute',
@@ -196,8 +214,13 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
+                '&:hover': {
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
+                },
               }}
-              onClick={()=>router.push('/FormViewPage2')}
+              onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
@@ -233,7 +256,6 @@ export default function WasteCategoryCards() {
             </Typography>
             <Button
               variant="contained"
-              color="error"
               size="small"
               sx={{
                 position: 'absolute',
@@ -241,13 +263,17 @@ export default function WasteCategoryCards() {
                 right: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f', // red text
+                '&:hover': {
+                  backgroundColor: '#f9d7d5', // slightly darker on hover
+                },
               }}
             >
               Not Registered
             </Button>
             <Button
               variant="contained"
-              color="primary"
               size="small"
               sx={{
                 position: 'absolute',
@@ -255,8 +281,13 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
+                backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
+                '&:hover': {
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
+                },
               }}
-              onClick={()=>router.push('/FormViewPage2')}
+              onClick={() => router.push('/FormViewPage2')}
             >
               Register Now
             </Button>
