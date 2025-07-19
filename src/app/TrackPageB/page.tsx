@@ -136,7 +136,7 @@ function Page() {
                             >
                                 <CheckCircleIcon fontSize="large" />
                                 <Typography fontWeight="bold">Step 4</Typography>
-                                <Typography fontSize="small">Approved</Typography>
+                                <Typography fontSize="small">Approved Pending</Typography>
                             </Box>
                         </Box>
                     </Box>

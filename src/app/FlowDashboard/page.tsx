@@ -57,8 +57,9 @@ function Page() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderRadius: 2,
-                boxShadow: 3,
+                borderRadius: 0,
+                boxShadow: 1,
+                
               }}
             >
               {/* Top Row */}
@@ -122,9 +123,9 @@ function Page() {
           <TableBody>
             <TableRow>
               <TableCell sx={{ color: '#757575' }}>Pavan Pvt Ltd</TableCell>
-              <TableCell sx={{ color: '#757575' }}>APP001</TableCell>
-              <TableCell sx={{ color: '#757575' }}>Registration</TableCell>
-              <TableCell sx={{ color: '#757575' }}>2025-07-17</TableCell>
+              <TableCell sx={{ color: '#757575' }}>APP0001</TableCell>
+              <TableCell sx={{ color: '#757575' }}>Recycler</TableCell>
+              <TableCell sx={{ color: '#757575' }}>21-07-2025</TableCell>
               <TableCell sx={{ color: '#757575' }}>Private Ltd</TableCell>
               <TableCell sx={{ color: '#757575' }}>Pending</TableCell>
               <TableCell>
@@ -133,9 +134,9 @@ function Page() {
             </TableRow>
             <TableRow>
               <TableCell sx={{ color: '#757575' }}>unify Pvt Ltd</TableCell>
-              <TableCell sx={{ color: '#757575' }}>APP002</TableCell>
-              <TableCell sx={{ color: '#757575' }}>Producer</TableCell>
-              <TableCell sx={{ color: '#757575' }}>2025-07-16</TableCell>
+              <TableCell sx={{ color: '#757575' }}>APP0002</TableCell>
+              <TableCell sx={{ color: '#757575' }}>Recycler</TableCell>
+              <TableCell sx={{ color: '#757575' }}>21-08-2025</TableCell>
               <TableCell sx={{ color: '#757575' }}>LLP</TableCell>
               <TableCell sx={{ color: '#757575' }}>Approved</TableCell>
               <TableCell>
@@ -144,9 +145,9 @@ function Page() {
             </TableRow>
             <TableRow>
               <TableCell sx={{ color: '#757575' }}>logify Pvt Ltd</TableCell>
-              <TableCell sx={{ color: '#757575' }}>APP003</TableCell>
+              <TableCell sx={{ color: '#757575' }}>APP0003</TableCell>
               <TableCell sx={{ color: '#757575' }}>Recycler</TableCell>
-              <TableCell sx={{ color: '#757575' }}>2025-07-15</TableCell>
+              <TableCell sx={{ color: '#757575' }}>21-07-2025</TableCell>
               <TableCell sx={{ color: '#757575' }}>Pagenership</TableCell>
               <TableCell sx={{ color: '#757575' }}>Rejected</TableCell>
               <TableCell>

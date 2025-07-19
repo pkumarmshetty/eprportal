@@ -32,7 +32,7 @@ function page() {
                       <TableCell sx={{ color: '#757575' }}>Private Ltd</TableCell>
                       <TableCell sx={{ color: '#757575' }}>Pending</TableCell>
                       <TableCell>
-                        <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>
+                        <Button size="small" variant="outlined" onClick={() => router.push('/AdminTimeLine')}>View</Button>
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -43,7 +43,7 @@ function page() {
                       <TableCell sx={{ color: '#757575' }}>LLP</TableCell>
                       <TableCell sx={{ color: '#757575' }}>Approved</TableCell>
                       <TableCell>
-                        <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>
+                        <Button size="small" variant="outlined" onClick={() => router.push('/AdminTimeLine')}>View</Button>
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -54,7 +54,7 @@ function page() {
                       <TableCell sx={{ color: '#757575' }}>Pagenership</TableCell>
                       <TableCell sx={{ color: '#757575' }}>Rejected</TableCell>
                       <TableCell>
-                        <Button size="small" variant="outlined" onClick={() => router.push('/Registrations')}>View</Button>
+                        <Button size="small" variant="outlined" onClick={() => router.push('/AdminTimeLine')}>View</Button>
                       </TableCell>
                     </TableRow>
                   </TableBody>

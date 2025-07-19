@@ -9,6 +9,8 @@ import {
     Divider,
     Stack
 } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
+
 import AdminDashboard from '@/components/AdminDashboard';
 
 export default function Page() {
@@ -61,7 +63,7 @@ export default function Page() {
                                 <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={2}>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">GST Number</Typography>
-                                        <Typography fontWeight={500}>27ABCDE1234F1Z5</Typography>
+                                        <Typography fontWeight={500}>24AAACC1206D1ZM</Typography>
                                     </Box>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Application Type</Typography>
@@ -82,15 +84,23 @@ export default function Page() {
                                 <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={2}>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Legal Name</Typography>
-                                        <Typography fontWeight={500}>ABC Polymers Pvt. Ltd</Typography>
+                                        <Typography fontWeight={500}>Pavan Pvt Ltd</Typography>
                                     </Box>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Trade Name</Typography>
-                                        <Typography fontWeight={500}>ABC Plastics</Typography>
+                                        <Typography fontWeight={500}>Pavan Brand</Typography>
                                     </Box>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Type of Business</Typography>
                                         <Typography fontWeight={500}>Manufacturer</Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant="caption" color="text.secondary">Company PAN Card Number*</Typography>
+                                        <Typography fontWeight={500}>ABCDE1234F</Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant="caption" color="text.secondary">Company CIN Number *</Typography>
+                                        <Typography fontWeight={500}>U12345KA2021PTC123456</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -103,7 +113,7 @@ export default function Page() {
                                 <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={2}>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Name & Designation</Typography>
-                                        <Typography fontWeight={500}>Ramesh Kumar, Director</Typography>
+                                        <Typography fontWeight={500}>John Doe - Director</Typography>
                                     </Box>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Mobile Number</Typography>
@@ -111,7 +121,7 @@ export default function Page() {
                                     </Box>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">PAN Details</Typography>
-                                        <Typography fontWeight={500}>ABCDE1234Z</Typography>
+                                        <Typography fontWeight={500}>ABCDE1234F</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -123,13 +133,32 @@ export default function Page() {
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Industry Category
                                         </Typography>
-                                        <Typography fontWeight={500}>Document.PDF</Typography>
+                                        <Typography fontWeight={500}> <DownloadIcon sx={{ fontSize: 20 }} />Document.PDF</Typography>
                                     </Box>
                                     <Box>
                                         <Typography variant="caption" color="text.secondary">Exemption for Micro & Small Brand-Owners </Typography>
-                                        <Typography fontWeight={500}>Document.PDF</Typography>
+                                        <Typography fontWeight={500}> <DownloadIcon sx={{ fontSize: 20 }} />Document.PDF</Typography>
                                     </Box>
 
+                                </Box>
+                            </Box>
+                            <Box>
+                                <Typography variant="subtitle1" fontWeight="600" gutterBottom>
+                                   Additional Details
+                                </Typography>
+                                <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={2}>
+                                    <Box>
+                                        <Typography variant="caption" color="text.secondary">Year of Commencement of Operations*</Typography>
+                                        <Typography fontWeight={500}>10 years</Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant="caption" color="text.secondary">Status of Compliance with PWM Rules *</Typography>
+                                        <Typography fontWeight={500}>Compliant</Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant="caption" color="text.secondary">Thickness of Plastic Packaing*</Typography>
+                                        <Typography fontWeight={500}>60 microns</Typography>
+                                    </Box>
                                 </Box>
                             </Box>
                         </Stack>
@@ -146,12 +175,30 @@ export default function Page() {
                                 fontFamily: 'Inter',
                             }}
                         >
+                            <button
+                                style={{
+                                    backgroundColor: 'black',
+                                    color: 'white',
+                                    padding: '10px 20px',
+                                    margin:'10px 0px',
+                                    border: 'none',
+                                    borderRadius: '6px',
+                                    cursor: 'pointer',
+                                    fontWeight: 'bold',
+                                }}
+                                onClick={() => window.open(
+                                    '/AdminTimeLine',
+                                    '_blank'
+                                )}
+                            >
+                                Start Remote Verification
+                            </button>
                             <Typography
                                 variant="h6"
                                 fontWeight="600"
                                 sx={{ color: '#1A237E' }}
                             >
-                                AI Confidence Score
+                                AI Reviewer
                             </Typography>
                             {/* <Typography
                                 sx={{
@@ -168,16 +215,16 @@ export default function Page() {
                             <Divider sx={{ mb: 2 }} />
 
                             <Typography variant="subtitle2" fontWeight="bold" color="text.primary" gutterBottom>
-                                EPR Registration
+                                Application Type
                             </Typography>
-                            <Typography color="green" variant="body2">✔ Valid application type</Typography>
+                            <Typography color="green" variant="body2">✔ Valid registration type selected (Recycler – Plastic Waste)</Typography>
 
                             <Divider sx={{ my: 2 }} />
 
                             <Typography variant="subtitle2" fontWeight="bold" color="text.primary" gutterBottom>
                                 Company Details
                             </Typography>
-                            <Typography color="green" variant="body2">✔ All company details are consistent</Typography>
+                            <Typography color="green" variant="body2">✔ Company name, CIN, GSTIN, and address verified and consistent</Typography>
 
                             <Divider sx={{ my: 2 }} />
 
@@ -185,20 +232,29 @@ export default function Page() {
                                 Authorized Person Details
                             </Typography>
                             <Typography color="success" variant="body2">
-                                ✅ All required fields are present.
+                                ✔  All mandatory fields (name, designation, ID proof, contact details) are complete and verified.
                             </Typography>
-                            <Typography  variant="body2">
-                                ⚠ Reminder: Please ensure the PAN is valid and exactly 10 characters long.
+                            <Typography variant="subtitle2" fontWeight="bold" color="text.primary" gutterBottom>
+                                Document Uploads
+                            </Typography>
+                            <Typography color="success" variant="body2">
+                                ✔ All required documents (Trade License, Pollution Control Board NOC, Plant Photos) uploaded successfully and verified
 
                             </Typography>
 
                             <Divider sx={{ my: 2 }} />
 
                             <Typography variant="subtitle2" fontWeight="bold" color="text.primary" gutterBottom>
-                                Document Uploads
+                                Compliance Validation
                             </Typography>
-                            <Typography variant="body2">
-                                ⚠ MSME exemption is usually not for Recyclers
+                            <Typography color="success" variant="body2">
+                                ✔  GSTIN verified via GSTN API.
+                            </Typography>
+                            <Typography color="success" variant="body2">
+                                ✔  Plant location verified by category cell(GIS verified).
+                            </Typography>
+                            <Typography color="success" variant="body2">
+                                ✔ Recycling capacity and operational details validated successfully.
                             </Typography>
                         </Paper>
                     </Box>
