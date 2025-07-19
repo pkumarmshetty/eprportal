@@ -5,8 +5,21 @@ import DashboardComponent from '@/components/DashboardComponent';
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useRouter } from 'next/navigation';
 
 function Page() {
+    const router = useRouter();
+    const handleClick = () => {
+    // Open external link
+    window.open(
+      'https://8x8.vc/vpaas-magic-cookie-cf5217ce8a4048d89baa3f88ab649551/eprverification',
+      '_blank'
+    );
+
+    // Navigate to TrackPageB
+    router.push('/TrackPageB');
+  };
+
     return (
         <DashboardComponent>
             <Box sx={{ padding: 0 }}>
@@ -167,6 +180,40 @@ function Page() {
                         style={{ maxWidth: '100vw', height: 'auto', padding: '20px' }}
                     />
                     <div
+      onClick={handleClick}
+      style={{
+        backgroundColor: 'black',
+        width: '300px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        cursor: 'pointer',
+        position: 'relative',
+        top: '-220px',
+        right: '-50px',
+        borderRadius: '20px',
+        color: 'white',
+      }}
+    >
+      <span
+        style={{
+          backgroundColor: 'black',
+          width: '300px',
+          height: '48px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
+          fontWeight: 'bold',
+          textDecoration: 'none',
+          fontSize: '16px',
+          borderRadius: '4px',
+        }}
+      >
+        Start Remote Verification
+      </span>
+    </div>
+                    {/* <div
                         style={{
                             backgroundColor: 'black', // Green color (Material UI success)
                             width: '300px',             // Set desired height
@@ -205,7 +252,7 @@ function Page() {
                             Start Remote Verification
                         </a>
 
-                    </div>
+                    </div> */}
                 </span>
 
 
