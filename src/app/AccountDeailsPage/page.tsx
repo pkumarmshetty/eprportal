@@ -29,6 +29,7 @@ export default function SurveyPreview() {
         surveyModel.onComplete.add((sender) => {
           console.log('✅ Submitted Data:', sender.data);
           sender.clear(); // reset form fields
+          // @ts-ignore
           sender.isCompleted = false; // keep showing form
         });
 

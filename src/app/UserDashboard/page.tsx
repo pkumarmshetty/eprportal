@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import DashboardComponent from '@/components/DashboardComponent'
 import { Box, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 // import router from 'next/navigation';
@@ -6,8 +7,8 @@ import React from 'react'
 
 function page() {
   const [isRegistered, setIsRegistered] = React.useState(false);
-  const temp = localStorage.getItem('isOneRegistered')
-  console.log(temp)
+  // const temp = localStorage.getItem('isOneRegistered')
+  // console.log(temp)
 
   React.useEffect(() => {
     const temp = localStorage.getItem('isOneRegistered');
