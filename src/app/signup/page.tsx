@@ -764,7 +764,7 @@ export default function SurveyPreview() {
           question8: 'John Doe - Director',
           question9: '9876543210',
           question10: 'ABCDE1234F',
-            question16: 'shaivik@email.com',
+            question16: 'shaivik@gmail.com',
           question17: "******",
           question19: '24AAACC1206D1ZM'
         };
