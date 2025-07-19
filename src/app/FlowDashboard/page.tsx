@@ -57,9 +57,9 @@ function Page() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderRadius: 0,
+                borderRadius: '20px',
                 boxShadow: 1,
-                
+
               }}
             >
               {/* Top Row */}
