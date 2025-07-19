@@ -29,7 +29,6 @@ useEffect(() => {
           { type: 'text', name: 'question9', startWithNewLine: false, title: 'Mobile Number *' },
           { type: 'text', name: 'question10', startWithNewLine: false, title: 'PAN Details *' },
           { type: 'text', name: 'question16', title: 'Email Address *' },
-          { type: 'text', name: 'question17', title: 'Password *' },
         ],
       },
     ],
