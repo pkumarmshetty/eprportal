@@ -166,43 +166,46 @@ function Page() {
                         alt="tracker"
                         style={{ maxWidth: '100vw', height: 'auto', padding: '20px' }}
                     />
-                     <div
-                style={{
-                    backgroundColor: '#2e7d32', // Green color (Material UI success)
-                   width:'300px',             // Set desired height
-                    display: 'flex',             // Center the link
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                   cursor: 'pointer',  
-                   position:'relative'  ,
-                   top:'-220px' ,
-                   right:'-50px'
-                }}
-            >
-                <a
-  href="https://8x8.vc/vpaas-magic-cookie-cf5217ce8a4048d89baa3f88ab649551/eprverification"
-  target="_blank"
-  rel="noopener noreferrer"
-  style={{
-    backgroundColor: '#2e7d32',    // Material UI green
-    width: '300px',
-    height: '48px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontWeight: 'bold',
-    textDecoration: 'none',
-    fontSize: '16px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    
-  }}
->
-  Start Remote Verification
-</a>
+                    <div
+                        style={{
+                            backgroundColor: 'black', // Green color (Material UI success)
+                            width: '300px',             // Set desired height
+                            display: 'flex',             // Center the link
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            cursor: 'pointer',
+                            position: 'relative',
+                            top: '-220px',
+                            right: '-50px',
+                            borderRadius: '20px',
+                            color: 'white',
+                        }}
+                    >
+                        <a
+                            href="https://8x8.vc/vpaas-magic-cookie-cf5217ce8a4048d89baa3f88ab649551/eprverification"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                backgroundColor: 'black',    // Material UI green
+                                width: '300px',
+                                height: '48px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                color: 'white',
+                                fontWeight: 'bold',
+                                textDecoration: 'none',
+                                fontSize: '16px',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                
 
-            </div>
+                            }}
+                        >
+                            Start Remote Verification
+                        </a>
+
+                    </div>
                 </span>
 
 
