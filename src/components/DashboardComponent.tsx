@@ -261,25 +261,46 @@ export default function DashboardComponent({ children }: { children: React.React
             //   </ListItemButton>
             // </ListItem>
           )}
+          <ListItem disablePadding >
+            <ListItemButton
+              onClick={() => router.push('/EprCreditRequest')}
+              sx={{
+                borderRadius: '30px',
+                mx: 1,
+                '&:hover': {
+                  bgcolor: 'black',
+                  color: 'white',
+                  '& .MuiListItemIcon-root': {
+                    color: 'white',
+                  },
+                },
+              }}
+            >
+              <ListItemIcon>
+                <AdjustIcon />
+              </ListItemIcon>
+              <ListItemText primary={"EPR Credit Request"} />
+            </ListItemButton>
+          </ListItem>
 
         </List>
       </Drawer>
 
       <Box
-  component="main"
-  sx={{
-    flexGrow: 1,
-    backgroundColor: '#F9F9F9',
-    p: 3,
-    height: '100vh',         // ensures full viewport height
-    display: 'flex',
-    flexDirection: 'column',
-    
-  }}
->
-  <Toolbar />
-  {children}
-</Box>
+        component="main"
+        sx={{
+          flexGrow: 1,
+          backgroundColor: '#F9F9F9',
+          p: 3,
+          height: '100vh',         // ensures full viewport height
+          display: 'flex',
+          flexDirection: 'column',
+
+        }}
+      >
+        <Toolbar />
+        {children}
+      </Box>
 
     </Box>
   );
