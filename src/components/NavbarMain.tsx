@@ -59,7 +59,7 @@ const NavbarMain = () => {
       window.location.href = '/FlowDashboard';
     } // Redirect to home page
   }
-  if(email==="shaivik@gmail.com" && password==="user") {
+  if(email==="shaivik@email.com" && password==="user") {
 
     window.location.href = '/WasteCategory'; // Redirect to home page
   }
