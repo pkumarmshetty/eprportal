@@ -60,15 +60,15 @@ export default function WasteCategoryCards() {
                 right: '16px',
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: '#ebe860ff', // very light green
-                color: '#4f2b07ff', // green text
+                backgroundColor: '#fdecea', // light red background
+                color: '#d32f2f',// green text
                 '&:hover': {
                   backgroundColor: '#d0ebdc', // slightly darker on hover
                 },
               }}
 
             >
-              Processing
+             Not Registered 
             </Button>
 
             <Button
@@ -80,15 +80,15 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: 'white',
-                color: 'black',
+                backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
                 '&:hover': {
-                  backgroundColor: '#f0f0f0', // light gray on hover
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
                 },
               }}
-              onClick={() => router.push('/TrackPage')}
+              onClick={() => router.push('/FormViewPage2')}
             >
-              Track Status
+              Register Now
             </Button>
 
           </div>
