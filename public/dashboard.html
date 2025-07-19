@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common EPR Monitoring Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .map-container { height: calc(100vh - 80px); }
+        .sidebar { height: calc(100vh - 80px); overflow-y: auto; }
+        .marker-producer { background-color: #3B82F6; }
+        .marker-processor { background-color: #10B981; }
+        .marker-recycler { background-color: #F59E0B; }
+        .marker-violation { background-color: #EF4444; }
+        .custom-marker {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .pollution-overlay {
+            opacity: 0.6;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .alert-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+    <script src="../../../../../../../Downloads/indian_coordinates_500.js"></script>
+</head>
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="bg-white shadow-sm border-b border-gray-200">
+    <div class="px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                    <h1 class="text-xl font-semibold text-gray-900">Common EPR Monitoring Dashboard</h1>
+                </div>
+
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="text-sm text-gray-600">
+                    <i class="fas fa-clock mr-1"></i>
+                    Last Updated: <span id="lastUpdate">2025-07-20 14:30</span>
+                </div>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-download mr-2"></i>Export Report
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="flex h-full">
+    <!-- Left Sidebar -->
+    <div class="w-80 bg-white shadow-lg sidebar border-r border-gray-200">
+        <!-- Filters Section -->
+        <div class="p-6 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-900 mb-4">Filters & Controls</h2>
+
+            <!-- Map View Toggle -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Map View</label>
+                <div class="flex bg-gray-100 rounded-lg p-1">
+
+                    <button id="satelliteView" class="flex-1 py-2 px-3 text-sm font-medium rounded-md bg-white text-gray-900 shadow-sm">
+                        Satellite
+                    </button>
+                    <button id="standardView" class="flex-1 py-2 px-3 text-sm font-medium rounded-md text-gray-600 hover:text-gray-900 ">
+                        Standard
+                    </button>
+                </div>
+            </div>
+
+            <!-- Waste Category Filter -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Waste Category</label>
+                <select id="wasteCategory" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    <option value="all">All Categories</option>
+                    <option value="plastic waste">Plastic Waste</option>
+                    <option value="ewaste">E-Waste</option>
+                    <option value="used oil">Used Oil</option>
+                    <option value="tyre">Tyre</option>
+                    <option value="battery">Battery</option>
+                </select>
+            </div>
+
+            <!-- Entity Type Filter -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Entity Type</label>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="rounded border-gray-300 text-blue-600" data-filter="producer">
+                        <span class="ml-2 text-sm text-gray-700">Producers</span>
+                        <div class="w-3 h-3 bg-blue-500 rounded-full ml-auto"></div>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="rounded border-gray-300 text-green-600" data-filter="processor">
+                        <span class="ml-2 text-sm text-gray-700">Processors</span>
+                        <div class="w-3 h-3 bg-green-500 rounded-full ml-auto"></div>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="rounded border-gray-300 text-yellow-600" data-filter="recycler">
+                        <span class="ml-2 text-sm text-gray-700">Recyclers</span>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full ml-auto"></div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Compliance Status -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Compliance Status</label>
+                <select class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    <option value="all">All Status</option>
+                    <option value="compliant">Compliant</option>
+                    <option value="non-compliant">Non-Compliant</option>
+                    <option value="pending">Pending Review</option>
+                </select>
+            </div>
+
+            <!-- Region Filter -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Region</label>
+                <select class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    <option value="all">All Regions</option>
+                    <option value="north">North India</option>
+                    <option value="south">South India</option>
+                    <option value="east">East India</option>
+                    <option value="west">West India</option>
+                </select>
+            </div>
+
+            <!-- Time Period -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Time Period</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="py-2 px-3 text-xs font-medium rounded-md bg-blue-600 text-white">Today</button>
+                    <button class="py-2 px-3 text-xs font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200">7 Days</button>
+                    <button class="py-2 px-3 text-xs font-medium rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200">30 Days</button>
+                </div>
+            </div>
+
+            <!-- Pollution Overlay Toggle -->
+            <div class="mb-4">
+                <label class="flex items-center">
+                    <input type="checkbox" checked class="rounded border-gray-300 text-blue-600" id="pollutionOverlay">
+                    <span class="ml-2 text-sm text-gray-700">Show Pollution Levels</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Statistics</h3>
+
+            <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-blue-600 font-medium">Total Producers</p>
+                            <p class="text-2xl font-bold text-blue-900">100</p>
+                        </div>
+                        <i class="fas fa-industry text-blue-500 text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-green-600 font-medium">Total Processors</p>
+                            <p class="text-2xl font-bold text-green-900">100</p>
+                        </div>
+                        <i class="fas fa-cogs text-green-500 text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-yellow-600 font-medium">Total Recyclers</p>
+                            <p class="text-2xl font-bold text-yellow-900">100</p>
+                        </div>
+                        <i class="fas fa-recycle text-yellow-500 text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-red-600 font-medium">Compliance Rate</p>
+                            <p class="text-2xl font-bold text-red-900">87.3%</p>
+                        </div>
+                        <i class="fas fa-chart-line text-red-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Main Map Area -->
+    <div class="flex-1 relative">
+        <div id="map" class="map-container"></div>
+
+        <!-- Map Legend -->
+        <div class="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-4" style="z-index: 1000;">
+            <h4 class="text-sm font-semibold text-gray-900 mb-3">Legend</h4>
+            <div class="space-y-2">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Producers</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Processors</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Recyclers</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Violations</span>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="space-y-2">
+                <div class="flex items-center">
+                    <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Compliant</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Non-Compliant</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 bg-yellow-500 rounded-full mr-2"></div>
+                    <span class="text-xs text-gray-700">Pending Review</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-4 hidden">
+            <div class="flex items-center space-x-3">
+                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                <span class="text-sm text-gray-700">Loading data...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Entity Details Modal -->
+<div id="entityModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900" id="modalTitle">Entity Details</h3>
+                    <button id="closeModal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modalContent" class="space-y-3">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+                <div class="mt-6 flex space-x-3">
+                    <button class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition-colors">
+                        View Full Report
+                    </button>
+                    <button class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                        Schedule Inspection
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize map
+    // Set center to India's geographic center and zoom to fit the country
+    const map = L.map('map').setView([22.9734, 78.6569], 5);
+
+    // Map layers
+    const standardLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    });
+
+    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '© Esri'
+    });
+
+    satelliteLayer.addTo(map);
+
+    // Sample data for entities
+    const entities = [];
+
+    // Generate 100 producers
+    const producerNames = ["ABC Industries", "Prime Manufacturing", "Global Producers", "Tech Industries", "Metro Manufacturing", "Elite Producers", "Urban Industries", "Smart Manufacturing", "Green Industries", "Eco Producers"];
+    const wasteTypes = ["plastic waste", "ewaste", "used oil", "tyre", "battery"];
+    const complianceTypes = ["compliant", "non-compliant", "pending"];
+
+    // Function to generate coordinates within India's boundaries
+    function generateIndianCoordinates(ind) {
+        // Expanded list: Tier 1, 2, and 3 cities across India
+        const cities = [
+            {lat:30.07485, lng:78.13924},
+            {lat:28.43238, lng:76.9846},
+            {lat:17.9938, lng:83.56332},
+            {lat:26.37803, lng:91.67815},
+            {lat:27.42746, lng:88.33776},
+            {lat:14.41943, lng:77.36069},
+            {lat:13.18579, lng:80.06151},
+            {lat:25.98043, lng:91.65605},
+            {lat:25.68215, lng:91.75949},
+            {lat:30.98244, lng:76.8563},
+            {lat:33.92994, lng:74.48052},
+            {lat:10.8831, lng:77.23088},
+            {lat:25.66286, lng:83.08794},
+            {lat:19.21048, lng:72.91694},
+            {lat:17.18897, lng:78.37385},
+            {lat:22.9442, lng:76.11611},
+            {lat:17.5616, lng:78.61757},
+            {lat:27.07808, lng:75.55064},
+            {lat:25.66853, lng:85.30319},
+            {lat:31.89384, lng:75.06595},
+            {lat:20.96278, lng:81.55411},
+            {lat:26.04548, lng:91.91217},
+            {lat:23.22157, lng:85.37738},
+            {lat:25.89794, lng:85.47523},
+            {lat:13.02862, lng:77.35198},
+            {lat:14.45716, lng:77.28322},
+            {lat:24.72032, lng:73.742},
+            {lat:20.53926, lng:85.7691},
+            {lat:28.33391, lng:77.34155},
+            {lat:27.32412, lng:78.15299},
+            {lat:13.25607, lng:80.36121},
+            {lat:19.65041, lng:73.77755},
+            {lat:27.21803, lng:88.63962},
+            {lat:31.43376, lng:76.888},
+            {lat:21.17245, lng:81.44043},
+            {lat:11.34539, lng:77.01325},
+            {lat:28.76823, lng:77.2544},
+            {lat:23.80195, lng:92.87058},
+            {lat:21.35708, lng:78.95003},
+            {lat:18.30998, lng:73.52414},
+            {lat:15.36862, lng:73.9985},
+            {lat:32.64543, lng:75.19137},
+            {lat:16.15841, lng:80.52855},
+            {lat:22.2731, lng:73.27002},
+            {lat:26.88032, lng:75.65069},
+            {lat:27.10836, lng:77.91443},
+            {lat:30.50812, lng:76.73549},
+            {lat:13.57753, lng:79.56464},
+            {lat:22.24278, lng:73.38542},
+            {lat:31.601, lng:74.95844},
+            {lat:13.46998, lng:79.35594},
+            {lat:14.76944, lng:77.88486},
+            {lat:32.67038, lng:74.51748},
+            {lat:28.09531, lng:78.29008},
+            {lat:28.23133, lng:78.20193},
+            {lat:21.1065, lng:78.87243},
+            {lat:13.77644, lng:79.56401},
+            {lat:17.09777, lng:78.67954},
+            {lat:15.71179, lng:73.88979},
+            {lat:11.12657, lng:76.5337},
+            {lat:31.71514, lng:75.16163},
+            {lat:10.95491, lng:76.9118},
+            {lat:25.25017, lng:83.15268},
+            {lat:30.79825, lng:75.53388},
+            {lat:31.36198, lng:75.13564},
+            {lat:26.92928, lng:78.21608},
+            {lat:30.75939, lng:77.02411},
+            {lat:22.91167, lng:72.43942},
+            {lat:11.07752, lng:76.65901},
+            {lat:13.26399, lng:77.59162},
+            {lat:29.82685, lng:77.91719},
+            {lat:25.55965, lng:83.0367},
+            {lat:23.85143, lng:92.41772},
+            {lat:25.31812, lng:91.5636},
+            {lat:19.04475, lng:72.63446},
+            {lat:21.99383, lng:73.30485},
+            {lat:20.27471, lng:74.03571},
+            {lat:17.40082, lng:78.19095},
+            {lat:8.69587, lng:77.19916},
+            {lat:27.59572, lng:88.33465},
+            {lat:28.70227, lng:77.66564},
+            {lat:20.37794, lng:85.63818},
+            {lat:31.40687, lng:74.59266},
+            {lat:27.59965, lng:78.27377},
+            {lat:23.50431, lng:92.86661},
+            {lat:23.25525, lng:77.23143},
+            {lat:15.6063, lng:74.26008},
+            {lat:26.69229, lng:81.00945},
+            {lat:17.47475, lng:83.26803},
+            {lat:20.86778, lng:72.60701},
+            {lat:9.12872, lng:76.39331},
+            {lat:20.03375, lng:85.97743},
+            {lat:11.53467, lng:92.39713},
+            {lat:11.53263, lng:76.67235},
+            {lat:28.57809, lng:77.5293},
+            {lat:20.42496, lng:85.77335},
+            {lat:28.31436, lng:77.48555},
+            {lat:13.29554, lng:80.17729},
+            {lat:26.45672, lng:80.18114},
+            {lat:18.42753, lng:74.19853},
+            {lat:9.96696, lng:76.24582},
+            {lat:17.34982, lng:83.25666},
+            {lat:23.69122, lng:86.2881},
+            {lat:22.53473, lng:76.13565},
+            {lat:26.87306, lng:80.74383},
+            {lat:27.44049, lng:77.97301},
+            {lat:23.36923, lng:85.65482},
+            {lat:24.25681, lng:73.65754},
+            {lat:30.93094, lng:77.38602},
+            {lat:25.47476, lng:84.84278},
+            {lat:21.17238, lng:72.86858},
+            {lat:21.20889, lng:81.9305},
+            {lat:22.0618, lng:73.02302},
+            {lat:26.6892, lng:88.43127},
+            {lat:20.40101, lng:85.74669},
+            {lat:31.02897, lng:77.29417},
+            {lat:31.17147, lng:77.35235},
+            {lat:11.06763, lng:78.81129},
+            {lat:31.82594, lng:75.18744},
+            {lat:26.78168, lng:80.2942},
+            {lat:17.72931, lng:78.18012},
+            {lat:16.55783, lng:80.21412},
+            {lat:11.67358, lng:92.63826},
+            {lat:24.83601, lng:73.58731},
+            {lat:26.51054, lng:88.07851},
+            {lat:30.63204, lng:76.14907},
+            {lat:20.96794, lng:81.53399},
+            {lat:28.28433, lng:77.45739},
+            {lat:9.7163, lng:76.23699},
+            {lat:8.52572, lng:77.24109},
+            {lat:17.55887, lng:83.37224},
+            {lat:11.08436, lng:77.10493},
+            {lat:26.16857, lng:91.44018},
+            {lat:8.50652, lng:76.69033},
+            {lat:26.36833, lng:91.92353},
+            {lat:24.40124, lng:73.64872},
+            {lat:9.6035, lng:76.40528},
+            {lat:25.31555, lng:83.26024},
+            {lat:26.80253, lng:88.23869},
+            {lat:31.06616, lng:77.01661},
+            {lat:28.08428, lng:78.32387},
+            {lat:8.6607, lng:76.90427},
+            {lat:27.30447, lng:77.93341},
+            {lat:13.33616, lng:80.56527},
+            {lat:29.88849, lng:78.19149},
+            {lat:26.31626, lng:80.67639},
+            {lat:8.57289, lng:76.65428},
+            {lat:29.81426, lng:78.17199},
+            {lat:22.40848, lng:75.82231},
+            {lat:25.35554, lng:82.96426},
+            {lat:9.24766, lng:76.2003},
+            {lat:21.31688, lng:79.42055},
+            {lat:26.64588, lng:88.23311},
+            {lat:20.45809, lng:85.90773},
+            {lat:24.57402, lng:73.66122},
+            {lat:15.66684, lng:74.16551},
+            {lat:21.21958, lng:79.35861},
+            {lat:9.77434, lng:76.33238},
+            {lat:8.96029, lng:76.0001},
+            {lat:9.10903, lng:76.37072},
+            {lat:27.9247, lng:78.07031},
+            {lat:26.30534, lng:80.02555},
+            {lat:17.09225, lng:78.45515},
+            {lat:26.94534, lng:88.69953},
+            {lat:19.11364, lng:73.06145},
+            {lat:22.52186, lng:73.01923},
+            {lat:26.96351, lng:88.73861},
+            {lat:33.91007, lng:74.66177},
+            {lat:28.51429, lng:77.39649},
+            {lat:30.60927, lng:76.73033},
+            {lat:13.77653, lng:79.72985},
+            {lat:24.04934, lng:91.20557},
+            {lat:27.11239, lng:75.5183},
+            {lat:25.64938, lng:85.36179},
+            {lat:23.48764, lng:92.36838},
+            {lat:16.05848, lng:80.39656},
+            {lat:20.46093, lng:85.58904},
+            {lat:31.10576, lng:75.97519},
+            {lat:21.38563, lng:81.61888},
+            {lat:12.77167, lng:80.05935},
+            {lat:18.41557, lng:73.51736},
+            {lat:28.46982, lng:77.46467},
+            {lat:25.70986, lng:92.12908},
+            {lat:28.14319, lng:78.05862},
+            {lat:28.86097, lng:77.13014},
+            {lat:15.51113, lng:73.74863},
+            {lat:17.44637, lng:78.60588},
+            {lat:33.74052, lng:74.53577},
+            {lat:24.16774, lng:91.12393},
+            {lat:23.52463, lng:86.15952},
+            {lat:29.64467, lng:78.09},
+            {lat:19.15977, lng:72.99655},
+            {lat:23.80813, lng:90.95592},
+            {lat:25.51535, lng:82.90734},
+            {lat:28.61715, lng:77.47968},
+            {lat:20.43025, lng:86.10617},
+            {lat:25.31029, lng:84.81043},
+            {lat:17.56359, lng:83.4963},
+            {lat:26.7658, lng:88.42307},
+            {lat:26.57606, lng:81.26304},
+            {lat:22.8527, lng:72.85196},
+            {lat:17.56343, lng:78.68494},
+            {lat:26.4783, lng:88.5157},
+            {lat:28.21248, lng:77.44865},
+            {lat:11.82449, lng:92.58197},
+            {lat:31.22004, lng:76.99871},
+            {lat:15.56859, lng:74.24085},
+            {lat:10.02058, lng:76.39609},
+            {lat:17.70997, lng:83.0538},
+            {lat:33.97693, lng:74.7951},
+            {lat:17.30996, lng:78.67641},
+            {lat:30.9402, lng:75.68649},
+            {lat:32.50278, lng:74.86647},
+            {lat:17.61974, lng:83.00546},
+            {lat:13.80627, lng:79.22595},
+            {lat:23.69375, lng:85.58717},
+            {lat:23.80417, lng:86.49648},
+            {lat:11.10756, lng:78.964},
+            {lat:20.34075, lng:86.0358},
+            {lat:26.54708, lng:80.04746},
+            {lat:26.51379, lng:88.46301},
+            {lat:17.55713, lng:82.99419},
+            {lat:23.13548, lng:85.04026},
+            {lat:18.89829, lng:72.9626},
+            {lat:15.20768, lng:73.49758},
+            {lat:9.61047, lng:76.05045},
+            {lat:14.94564, lng:77.37676},
+            {lat:12.98078, lng:77.33215},
+            {lat:22.53372, lng:73.47092},
+            {lat:26.93284, lng:81.17907},
+            {lat:27.27392, lng:88.83073},
+            {lat:23.02035, lng:77.70099},
+            {lat:22.49812, lng:88.08272},
+            {lat:22.75357, lng:75.78971},
+            {lat:17.68576, lng:83.18477},
+            {lat:11.59345, lng:92.75965},
+            {lat:30.77955, lng:75.86632},
+            {lat:19.32354, lng:72.50349},
+            {lat:10.73174, lng:77.10825},
+            {lat:20.49081, lng:85.85712},
+            {lat:23.49503, lng:86.10466},
+            {lat:17.12279, lng:78.80669},
+            {lat:17.44153, lng:83.49778},
+            {lat:15.78748, lng:73.97449},
+            {lat:17.27994, lng:78.66444},
+            {lat:11.72589, lng:76.43594},
+            {lat:11.72094, lng:92.77114},
+            {lat:30.84099, lng:76.71351},
+            {lat:20.25949, lng:73.88133},
+            {lat:30.83968, lng:77.44784},
+            {lat:25.81708, lng:91.78539},
+            {lat:18.89976, lng:73.09065},
+            {lat:9.63375, lng:75.99134},
+            {lat:26.3184, lng:91.90786},
+            {lat:23.81783, lng:92.63782},
+            {lat:11.13114, lng:78.86711},
+            {lat:16.28146, lng:80.36262},
+            {lat:11.48293, lng:93.00011},
+            {lat:27.40885, lng:78.15117},
+            {lat:18.84134, lng:73.90167},
+            {lat:23.42449, lng:92.76143},
+            {lat:21.53137, lng:81.49695},
+            {lat:25.53619, lng:91.57062},
+            {lat:30.26818, lng:78.24034},
+            {lat:23.70098, lng:92.78313},
+            {lat:11.41559, lng:92.40667},
+            {lat:23.51155, lng:85.08853},
+            {lat:26.66737, lng:81.20838},
+            {lat:11.36063, lng:78.6208},
+            {lat:28.68188, lng:77.48949},
+            {lat:13.485, lng:79.41968},
+            {lat:23.62485, lng:86.6754},
+            {lat:34.21921, lng:74.9174},
+            {lat:31.52631, lng:74.68007},
+            {lat:25.80889, lng:91.73076},
+            {lat:26.53458, lng:88.58258},
+            {lat:19.0841, lng:72.54021},
+            {lat:16.36606, lng:80.34496},
+            {lat:20.99389, lng:79.30176},
+            {lat:11.27781, lng:76.54729},
+            {lat:20.8821, lng:72.84054},
+            {lat:26.90289, lng:88.51405},
+            {lat:18.84402, lng:72.92632},
+            {lat:23.19161, lng:84.98357},
+            {lat:26.8653, lng:81.1635},
+            {lat:22.47839, lng:88.05021},
+            {lat:19.10994, lng:72.73188},
+            {lat:25.27856, lng:83.2051},
+            {lat:26.17742, lng:91.72355},
+            {lat:23.50531, lng:85.57618},
+            {lat:22.55236, lng:75.90464},
+            {lat:16.65557, lng:80.13429},
+            {lat:17.73979, lng:83.24507},
+            {lat:19.37818, lng:72.60513},
+            {lat:26.99707, lng:88.27327},
+            {lat:15.46772, lng:73.94762},
+            {lat:13.17052, lng:80.22235},
+            {lat:20.80622, lng:79.40041},
+            {lat:14.59439, lng:77.5298},
+            {lat:27.20292, lng:78.24496},
+            {lat:17.66619, lng:78.40544},
+            {lat:28.32591, lng:77.44888},
+            {lat:22.38422, lng:75.6201},
+            {lat:16.28281, lng:80.58343},
+            {lat:18.94205, lng:73.0828},
+            {lat:13.27367, lng:80.43918},
+            {lat:26.17809, lng:80.39581},
+            {lat:26.72665, lng:80.98896},
+            {lat:22.79873, lng:75.83782},
+            {lat:22.77967, lng:75.87022},
+            {lat:14.39417, lng:77.27464},
+            {lat:28.04224, lng:78.34472},
+            {lat:13.89912, lng:79.40487},
+            {lat:24.06587, lng:86.54719},
+            {lat:26.45633, lng:88.30656},
+            {lat:23.67467, lng:86.50981},
+            {lat:14.34201, lng:77.28218},
+            {lat:23.83257, lng:86.38537},
+            {lat:26.75486, lng:88.20066},
+            {lat:26.21693, lng:80.23284},
+            {lat:22.94562, lng:72.36064},
+            {lat:8.33344, lng:76.64175},
+            {lat:17.61347, lng:78.58771},
+            {lat:17.49321, lng:78.68749},
+            {lat:23.75696, lng:91.19868},
+            {lat:10.84701, lng:77.22293},
+            {lat:27.09108, lng:78.03709},
+            {lat:31.91252, lng:74.70241},
+            {lat:24.06414, lng:92.97177},
+            {lat:14.35669, lng:77.72406},
+            {lat:31.22335, lng:75.57654},
+            {lat:17.51428, lng:78.39264},
+            {lat:26.76106, lng:88.64202},
+            {lat:17.14058, lng:78.74542},
+            {lat:30.68673, lng:75.97527},
+            {lat:23.37695, lng:77.4045},
+            {lat:28.23116, lng:78.18593},
+            {lat:27.26739, lng:78.22045},
+            {lat:28.52748, lng:77.45708},
+            {lat:30.65496, lng:75.97961},
+            {lat:10.98875, lng:76.94405},
+            {lat:26.41209, lng:88.49416},
+            {lat:21.22723, lng:72.63614},
+            {lat:13.40923, lng:79.36641},
+            {lat:26.68298, lng:76.03175},
+            {lat:20.80359, lng:78.99533},
+            {lat:22.6042, lng:73.10416},
+            {lat:23.17877, lng:72.23451},
+            {lat:30.76249, lng:75.60301},
+            {lat:21.2128, lng:81.64498},
+            {lat:26.72152, lng:80.06617},
+            {lat:23.36265, lng:85.28009},
+            {lat:21.48611, lng:78.86281},
+            {lat:11.73914, lng:76.51218},
+            {lat:13.86341, lng:79.20807},
+            {lat:20.01932, lng:73.58946},
+            {lat:23.57149, lng:85.58289},
+            {lat:27.58482, lng:88.30076},
+            {lat:28.73152, lng:77.20241},
+            {lat:8.86693, lng:76.90193},
+            {lat:25.24652, lng:85.21113},
+            {lat:20.86408, lng:79.06357},
+            {lat:12.7675, lng:77.51629},
+            {lat:17.75085, lng:83.2818},
+            {lat:25.59878, lng:84.79755},
+            {lat:28.5781, lng:77.09089},
+            {lat:23.94056, lng:86.40698},
+            {lat:11.23205, lng:76.4001},
+            {lat:17.5646, lng:78.36276},
+            {lat:19.89633, lng:73.91032},
+            {lat:17.7559, lng:83.09481},
+            {lat:17.25594, lng:78.39667},
+            {lat:16.50973, lng:80.59807},
+            {lat:25.86864, lng:92.23967},
+            {lat:25.25014, lng:82.68725},
+            {lat:22.99303, lng:77.51825},
+            {lat:33.97698, lng:74.53714},
+            {lat:26.20535, lng:91.72426},
+            {lat:27.07759, lng:77.70831},
+            {lat:23.68565, lng:86.29351},
+            {lat:11.185, lng:76.65127},
+            {lat:9.06702, lng:76.31994},
+            {lat:19.37126, lng:72.83575},
+            {lat:17.09917, lng:78.7403},
+            {lat:34.39556, lng:74.58726},
+            {lat:32.45787, lng:74.6362},
+            {lat:19.3856, lng:72.65965},
+            {lat:11.33643, lng:78.58537},
+            {lat:22.49768, lng:72.96045},
+            {lat:11.30446, lng:78.65131},
+            {lat:21.16535, lng:81.89049},
+            {lat:33.95449, lng:74.63254},
+            {lat:27.2046, lng:75.80132},
+            {lat:21.38217, lng:81.60101},
+            {lat:26.45753, lng:80.03588},
+            {lat:31.63145, lng:75.09189},
+            {lat:27.24352, lng:78.01161},
+            {lat:27.36376, lng:88.67205},
+            {lat:23.14661, lng:85.07155},
+            {lat:13.35067, lng:80.28219},
+            {lat:20.80719, lng:79.17255},
+            {lat:21.22928, lng:81.52125},
+            {lat:16.13296, lng:80.63722},
+            {lat:13.72335, lng:79.45567},
+            {lat:17.81827, lng:83.04722},
+            {lat:21.08313, lng:79.3094},
+            {lat:31.36015, lng:74.65368},
+            {lat:28.64872, lng:77.24905},
+            {lat:28.79017, lng:77.17274},
+            {lat:15.49984, lng:73.96743},
+            {lat:23.73081, lng:91.1288},
+            {lat:30.64705, lng:76.1691},
+            {lat:28.28734, lng:77.40714},
+            {lat:17.338, lng:82.98303},
+            {lat:22.52284, lng:75.62686},
+            {lat:19.15773, lng:72.60988},
+            {lat:17.12844, lng:78.15349},
+            {lat:31.88297, lng:75.18534},
+            {lat:20.26883, lng:74.13024},
+            {lat:19.41617, lng:72.52096},
+            {lat:26.499, lng:88.64884},
+            {lat:17.94072, lng:83.22991},
+            {lat:18.97881, lng:72.87891},
+            {lat:15.32413, lng:73.86254},
+            {lat:31.61816, lng:74.615},
+            {lat:13.7226, lng:79.21576},
+            {lat:32.74723, lng:74.94734},
+            {lat:19.27685, lng:72.682},
+            {lat:10.90174, lng:78.79082},
+            {lat:14.62845, lng:77.94874},
+            {lat:14.37263, lng:77.84919},
+            {lat:26.22037, lng:80.22736},
+            {lat:20.97205, lng:81.65392},
+            {lat:21.17876, lng:78.85151},
+            {lat:30.62332, lng:76.74097},
+            {lat:23.58202, lng:90.96689},
+            {lat:23.2672, lng:77.26908},
+            {lat:27.15251, lng:75.51499},
+            {lat:22.75343, lng:76.05676},
+            {lat:15.24972, lng:73.74232},
+            {lat:22.89547, lng:88.41135},
+            {lat:24.00825, lng:92.73756},
+            {lat:19.20619, lng:73.05002},
+            {lat:30.56801, lng:77.09741},
+            {lat:8.73791, lng:77.00678},
+            {lat:30.13942, lng:78.13907},
+            {lat:28.75062, lng:77.36674},
+            {lat:28.48963, lng:77.72134},
+            {lat:27.23589, lng:77.79957},
+            {lat:21.49042, lng:72.93026},
+            {lat:26.95583, lng:78.34854},
+            {lat:23.3428, lng:72.51212},
+            {lat:17.79188, lng:83.48276},
+            {lat:20.80086, lng:86.1483},
+            {lat:26.75654, lng:80.5093},
+            {lat:13.93526, lng:79.32464},
+            {lat:23.12743, lng:85.01793},
+            {lat:11.83236, lng:92.96325},
+            {lat:23.06305, lng:75.6283},
+            {lat:26.82915, lng:80.92432},
+            {lat:23.06547, lng:85.51834},
+            {lat:26.6286, lng:75.49777},
+            {lat:24.11143, lng:86.41378},
+            {lat:8.83814, lng:77.16411},
+            {lat:20.96894, lng:72.59054},
+            {lat:13.87499, lng:79.21406},
+            {lat:18.29367, lng:73.80509},
+            {lat:27.43214, lng:77.91048},
+            {lat:20.56379, lng:85.68601},
+            {lat:20.32086, lng:86.15967},
+            {lat:14.36146, lng:77.74342},
+            {lat:27.1072, lng:88.8634},
+            {lat:27.03344, lng:88.40016},
+            {lat:18.43744, lng:74.12086},
+            {lat:17.54135, lng:78.71689},
+            {lat:29.70978, lng:77.95375},
+            {lat:24.36425, lng:73.91666},
+            {lat:22.65845, lng:88.35264},
+            {lat:20.43071, lng:85.83934},
+            {lat:13.37309, lng:80.42554},
+            {lat:20.08459, lng:85.62492},
+            {lat:30.11188, lng:78.11879},
+            {lat:30.58547, lng:76.7718},
+            {lat:9.38609, lng:75.9989},
+            {lat:30.76868, lng:76.92182},
+            {lat:17.45863, lng:83.21308},
+            {lat:20.21005, lng:74.10416},
+            {lat:11.41415, lng:78.91647},
+            {lat:15.70932, lng:74.17315},
+            {lat:27.09336, lng:88.43139},
+            {lat:15.76994, lng:74.10722},
+            {lat:32.50916, lng:75.10406},
+            {lat:30.94404, lng:76.83447},
+            {lat:22.09333, lng:73.4845},
+            {lat:17.93952, lng:82.95564},
+            {lat:15.62249, lng:74.12445},
+            {lat:19.03024, lng:72.7962},
+            {lat:11.64137, lng:76.49246},
+            {lat:18.54106, lng:74.11813},
+            {lat:8.66784, lng:76.77627}
+        ]
+        // Pick a random city as a base
+        const base = cities[ind % cities.length];
+        // Add a small random offset (up to ~0.5 degree) to scatter points around the city
+        const lat = base.lat + (Math.random() - 0.5) * 1.0;
+        const lng = base.lng + (Math.random() - 0.5) * 1.0;
+        // Clamp to India's bounding box
+        const clampedLat = Math.max(8.0, Math.min(37.5, lat));
+        const clampedLng = Math.max(68.0, Math.min(97.0, lng));
+        return { lat: clampedLat, lng: clampedLng };
+    }
+
+    let count = 100;
+    for (let i = 0; i < 100; i++) {
+        const coords = generateIndianCoordinates(i);
+        entities.push({
+            id: i + 1,
+            name: `${producerNames[i % producerNames.length]} ${Math.floor(i/10) + 1}`,
+            type: "producer",
+            lat: coords.lat,
+            lng: coords.lng,
+            compliance: complianceTypes[Math.floor(Math.random() * complianceTypes.length)],
+            wasteType: wasteTypes[Math.floor(Math.random() * wasteTypes.length)],
+            lastInspection: `2024-01-${String(Math.floor(Math.random() * 15) + 1).padStart(2, '0')}`
+        });
+    }
+
+    // Generate 100 processors
+    const processorNames = ["Green Processors", "Waste Solutions", "Clean Tech", "Process Masters", "Eco Processing", "Smart Processors", "Urban Processing", "Tech Solutions", "Green Solutions", "Waste Masters"];
+
+    for (let i = 0; i < 150; i++) {
+        const coords = generateIndianCoordinates(i);
+        entities.push({
+            id: i + 101,
+            name: `${processorNames[i % processorNames.length]} ${Math.floor(i/10) + 1}`,
+            type: "processor",
+            lat: coords.lat,
+            lng: coords.lng,
+            compliance: complianceTypes[Math.floor(Math.random() * complianceTypes.length)],
+            wasteType: wasteTypes[Math.floor(Math.random() * wasteTypes.length)],
+            lastInspection: `2024-01-${String(Math.floor(Math.random() * 15) + 1).padStart(2, '0')}`
+        });
+    }
+
+    // Generate 100 recyclers
+    const recyclerNames = ["EcoRecycle", "Green Recycling", "Waste Recyclers", "Clean Recycling", "Smart Recyclers", "Urban Recycling", "Tech Recyclers", "Eco Solutions", "Green Tech", "Recycle Masters"];
+
+    for (let i = 0; i < 200; i++) {
+        const coords = generateIndianCoordinates(i);
+        entities.push({
+            id: i + 201,
+            name: `${recyclerNames[i % recyclerNames.length]} ${Math.floor(i/10) + 1}`,
+            type: "recycler",
+            lat: coords.lat,
+            lng: coords.lng,
+            compliance: complianceTypes[Math.floor(Math.random() * complianceTypes.length)],
+            wasteType: wasteTypes[Math.floor(Math.random() * wasteTypes.length)],
+            lastInspection: `2024-01-${String(Math.floor(Math.random() * 15) + 1).padStart(2, '0')}`
+        });
+    }
+
+    // Pollution data
+    const pollutionZones = [
+        { lat: 28.7041, lng: 77.1025, level: "high", pm25: 85.2 },
+        { lat: 19.0760, lng: 72.8777, level: "moderate", pm25: 45.1 },
+        { lat: 13.0827, lng: 80.2707, level: "low", pm25: 25.3 },
+        { lat: 28.5355, lng: 77.3910, level: "high", pm25: 92.7 },
+        { lat: 12.9716, lng: 77.5946, level: "moderate", pm25: 38.9 }
+    ];
+
+    let entityMarkers = [];
+    let pollutionOverlays = [];
+
+    // Create entity markers
+    function createEntityMarkers() {
+        entityMarkers.forEach(marker => map.removeLayer(marker));
+        entityMarkers = [];
+
+        // Get active filters
+        const activeFilters = [];
+        document.querySelectorAll('input[data-filter]:checked').forEach(checkbox => {
+            activeFilters.push(checkbox.dataset.filter);
+        });
+
+        // Get selected waste category
+        const selectedWasteCategory = document.getElementById('wasteCategory').value;
+
+        entities.forEach(entity => {
+            // Skip if entity type is not in active filters
+            if (!activeFilters.includes(entity.type)) return;
+
+            // Skip if waste category doesn't match (unless "all" is selected)
+            if (selectedWasteCategory !== 'all' && entity.wasteType !== selectedWasteCategory) return;
+
+            const color = getEntityColor(entity.type);
+            const marker = L.circleMarker([entity.lat, entity.lng], {
+                radius: 6,
+                fillColor: color,
+                color: 'white',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            });
+
+            marker.bindPopup(`
+                    <div class="p-2">
+                        <h4 class="font-semibold text-gray-900">${entity.name}</h4>
+                        <p class="text-sm text-gray-600 capitalize">${entity.type}</p>
+                        <p class="text-sm text-gray-600">Waste: ${entity.wasteType}</p>
+                        <p class="text-sm ${getComplianceColor(entity.compliance)}">${entity.compliance.replace('-', ' ').toUpperCase()}</p>
+                    </div>
+                `);
+
+            marker.on('click', () => showEntityDetails(entity));
+            marker.addTo(map);
+            entityMarkers.push(marker);
+        });
+    }
+
+    // Create pollution overlays
+    function createPollutionOverlays() {
+        pollutionOverlays.forEach(overlay => map.removeLayer(overlay));
+        pollutionOverlays = [];
+
+        if (document.getElementById('pollutionOverlay').checked) {
+            pollutionZones.forEach(zone => {
+                const color = getPollutionColor(zone.level);
+                const radius = getPollutionRadius(zone.level);
+
+                const overlay = L.circle([zone.lat, zone.lng], {
+                    radius: radius,
+                    fillColor: color,
+                    color: color,
+                    weight: 1,
+                    opacity: 0.6,
+                    fillOpacity: 0.3
+                });
+
+                overlay.bindTooltip(`PM2.5: ${zone.pm25} μg/m³<br>Level: ${zone.level.toUpperCase()}`, {
+                    permanent: false,
+                    direction: 'top'
+                });
+
+                overlay.addTo(map);
+                pollutionOverlays.push(overlay);
+            });
+        }
+    }
+
+    // Helper functions
+    function getEntityColor(type) {
+        const colors = {
+            producer: '#3B82F6',
+            processor: '#10B981',
+            recycler: '#F59E0B'
+        };
+        return colors[type] || '#6B7280';
+    }
+
+    function getComplianceColor(compliance) {
+        const colors = {
+            compliant: 'text-green-600',
+            'non-compliant': 'text-red-600',
+            pending: 'text-yellow-600'
+        };
+        return colors[compliance] || 'text-gray-600';
+    }
+
+    function getPollutionColor(level) {
+        const colors = {
+            high: '#EF4444',
+            moderate: '#F59E0B',
+            low: '#10B981'
+        };
+        return colors[level] || '#6B7280';
+    }
+
+    function getPollutionRadius(level) {
+        const radii = {
+            high: 5000,
+            moderate: 3000,
+            low: 2000
+        };
+        return radii[level] || 2000;
+    }
+
+    // Show entity details modal
+    function showEntityDetails(entity) {
+        const modal = document.getElementById('entityModal');
+        const title = document.getElementById('modalTitle');
+        const content = document.getElementById('modalContent');
+
+        title.textContent = entity.name;
+        content.innerHTML = `
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Type</p>
+                        <p class="font-medium capitalize">${entity.type}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Waste Category</p>
+                        <p class="font-medium">${entity.wasteType}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Compliance Status</p>
+                        <p class="font-medium ${getComplianceColor(entity.compliance)}">${entity.compliance.replace('-', ' ').toUpperCase()}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Last Inspection</p>
+                        <p class="font-medium">${entity.lastInspection}</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-600">Location</p>
+                    <p class="font-medium">${entity.lat.toFixed(4)}, ${entity.lng.toFixed(4)}</p>
+                </div>
+            `;
+
+        modal.classList.remove('hidden');
+    }
+
+    // Event listeners
+    document.getElementById('closeModal').addEventListener('click', () => {
+        document.getElementById('entityModal').classList.add('hidden');
+    });
+
+    document.getElementById('entityModal').addEventListener('click', (e) => {
+        if (e.target.id === 'entityModal') {
+            document.getElementById('entityModal').classList.add('hidden');
+        }
+    });
+
+    // Map view toggle
+    document.getElementById('standardView').addEventListener('click', () => {
+        map.removeLayer(satelliteLayer);
+        map.addLayer(standardLayer);
+        document.getElementById('standardView').classList.add('bg-white', 'text-gray-900', 'shadow-sm');
+        document.getElementById('standardView').classList.remove('text-gray-600');
+        document.getElementById('satelliteView').classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
+        document.getElementById('satelliteView').classList.add('text-gray-600');
+    });
+
+    document.getElementById('satelliteView').addEventListener('click', () => {
+        map.removeLayer(standardLayer);
+        map.addLayer(satelliteLayer);
+        document.getElementById('satelliteView').classList.add('bg-white', 'text-gray-900', 'shadow-sm');
+        document.getElementById('satelliteView').classList.remove('text-gray-600');
+        document.getElementById('standardView').classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
+        document.getElementById('standardView').classList.add('text-gray-600');
+    });
+
+    // Pollution overlay toggle
+    document.getElementById('pollutionOverlay').addEventListener('change', createPollutionOverlays);
+
+    // Filter checkboxes
+    document.querySelectorAll('input[data-filter]').forEach(checkbox => {
+        checkbox.addEventListener('change', createEntityMarkers);
+    });
+
+    // Waste category filter
+    document.getElementById('wasteCategory').addEventListener('change', createEntityMarkers);
+
+    // Initialize
+    createEntityMarkers();
+    createPollutionOverlays();
+
+    // Update timestamp
+    setInterval(() => {
+        const now = new Date();
+        document.getElementById('lastUpdate').textContent = now.toLocaleString('en-IN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }, 60000);
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96129f5f30457f3d',t:'MTc1Mjg0ODQ1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
