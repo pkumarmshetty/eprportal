@@ -14,7 +14,7 @@ useEffect(() => {
       {
         name: 'page1',
         elements: [
-          { type: 'html', name: 'question22', html: '<h3>Registration for EPR Registration</h3>' },
+          { type: 'html', name: 'question22', html: '<h3>Registration for Common EPR Registration</h3>' },
           { type: 'text', name: 'question19', title: 'GST Number *' },
           { type: 'html', name: 'question14', html: '<h4>Company Details</h4>' },
           { type: 'text', name: 'question1', title: 'Legal Name*' },
@@ -29,7 +29,6 @@ useEffect(() => {
           { type: 'text', name: 'question9', startWithNewLine: false, title: 'Mobile Number *' },
           { type: 'text', name: 'question10', startWithNewLine: false, title: 'PAN Details *' },
           { type: 'text', name: 'question16', title: 'Email Address *' },
-          { type: 'text', name: 'question17', title: 'Password *' },
         ],
       },
     ],

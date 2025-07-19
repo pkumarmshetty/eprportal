@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
                 source: '/admin/dashboard',
                 destination: '/dashboard.html',
             },
+            {
+                source: '/01K0HM2J1H587XBJ5WP7MS3TRT',
+                destination: '/01K0HM2J1H587XBJ5WP7MS3TRT.svg'
+            }
         ];
     },
 };
