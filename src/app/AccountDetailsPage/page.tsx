@@ -82,20 +82,6 @@ useEffect(() => {
         <h5 style={{ fontWeight: 'bold' }}>Common Details (Account Details)</h5>
         <Survey model={model} />
         <div style={{ textAlign: 'right', marginTop: '16px' }}>
-          <button
-            onClick={handleSubmit}
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              backgroundColor: '#1976d2',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '6px',
-              cursor: 'pointer',
-            }}
-          >
-            Submit
-          </button>
         </div>
       </div>
     </DashboardComponent>
