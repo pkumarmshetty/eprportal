@@ -80,8 +80,8 @@ const handleChange = (e) => {
   const handleTabClick = (key) => {
     setSelectedTab(key);
   }
-  const temp = localStorage.getItem('isOneRegistered')
-  console.log(isPiboCetagorySelected)
+  // const temp = localStorage.getItem('isOneRegistered')
+  // console.log(isPiboCetagorySelected)
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
