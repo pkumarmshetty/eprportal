@@ -31,7 +31,7 @@ export default function DashboardComponent({ children }: { children: React.React
     setfirst(role);
   }, [setfirst])
   return (
-    <Box sx={{ display: 'flex', zoom: 0.8 }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* <AppBar
         position="fixed"
@@ -274,7 +274,7 @@ export default function DashboardComponent({ children }: { children: React.React
     height: '100vh',         // ensures full viewport height
     display: 'flex',
     flexDirection: 'column',
-    zoom: 0.8
+    
   }}
 >
   <Toolbar />

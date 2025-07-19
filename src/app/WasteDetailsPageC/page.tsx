@@ -209,35 +209,37 @@ export default function SurveyPreview() {
                   <th style={styles.th}>Recycled Plastic (%)</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td style={styles.td} rowSpan="3">01</td>
-                  <td style={styles.td} rowSpan="3">Delhi</td>
-                  <td style={styles.td} rowSpan="3">2021-22</td>
-                  <td style={styles.td}>Rigid Plastics (Cat-I)</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
-                </tr>
-                <tr>
-                  <td style={styles.td}>Flexible Plastic (Cat-II)</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
-                </tr>
-                <tr>
-                  <td style={styles.td}>MLP (Cat-III)</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}>0</td>
-                  <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
-                </tr>
-              </tbody>
+             <tbody>
+  <tr>
+    <td style={styles.td} rowSpan="3">01</td>
+    <td style={styles.td} rowSpan="3">Delhi</td>
+    <td style={styles.td} rowSpan="3">2021-22</td>
+
+    <td style={styles.td}>Rigid Plastics (Cat-I)</td>
+    <td style={styles.td}>120</td>
+    <td style={styles.td}>115</td>
+    <td style={styles.td}>5</td>
+    <td style={styles.td}>95.83%</td>
+    <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
+  </tr>
+  <tr>
+    <td style={styles.td}>Flexible Plastic (Cat-II)</td>
+    <td style={styles.td}>200</td>
+    <td style={styles.td}>180</td>
+    <td style={styles.td}>20</td>
+    <td style={styles.td}>90.00%</td>
+    <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
+  </tr>
+  <tr>
+    <td style={styles.td}>MLP (Cat-III)</td>
+    <td style={styles.td}>300</td>
+    <td style={styles.td}>270</td>
+    <td style={styles.td}>30</td>
+    <td style={styles.td}>90.00%</td>
+    <td style={styles.td}><span style={styles.editButton}>Edit</span></td>
+  </tr>
+</tbody>
+
             </table>
           </div>
 

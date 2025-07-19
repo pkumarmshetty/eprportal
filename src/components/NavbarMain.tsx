@@ -59,7 +59,7 @@ const NavbarMain = () => {
       window.location.href = '/FlowDashboard';
     } // Redirect to home page
   }
-  if(email==="pavan@gmail.com" && password==="user") {
+  if(email==="shaivik@gmail.com" && password==="user") {
 
     window.location.href = '/WasteCategory'; // Redirect to home page
   }
@@ -276,6 +276,7 @@ const NavbarMain = () => {
       variant="body2"
       align="center"
       sx={{ color: '#7CB342', cursor: 'pointer', fontWeight: 500, width: '100%' }}
+      onClick={()=>window.location.href='/FlowDashboard'}
     >
       Login as Admin
     </Typography>

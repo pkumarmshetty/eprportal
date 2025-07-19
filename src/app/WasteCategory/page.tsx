@@ -25,8 +25,8 @@ export default function WasteCategoryCards() {
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-              height: '300px',
-               backgroundImage: 'url(img1.webp)',
+              height: '200px',
+              backgroundImage: 'url(img1.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               color: '#fff',
@@ -48,10 +48,10 @@ export default function WasteCategoryCards() {
               }}
             />
             <Typography fontWeight="bold" sx={{ position: 'absolute', top: 16, left: 16, zIndex: 1 }}>
-              
-            E- Waste Management
+
+              E- Waste Management
             </Typography>
-             <Button
+            <Button
               variant="contained"
               size="small"
               sx={{
@@ -97,7 +97,7 @@ export default function WasteCategoryCards() {
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-              height: '300px',
+              height: '200px',
               backgroundImage: 'url(img2.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -165,8 +165,8 @@ export default function WasteCategoryCards() {
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-              height: '300px',
-               backgroundImage: 'url(img3.webp)',
+              height: '200px',
+              backgroundImage: 'url(img3.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               color: '#fff',
@@ -232,7 +232,7 @@ export default function WasteCategoryCards() {
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-              height: '300px',
+              height: '200px',
               backgroundImage: 'url(img4.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -295,11 +295,11 @@ export default function WasteCategoryCards() {
             </Button>
           </div>
 
-  {/* Card 5 */}
+          {/* Card 5 */}
           <div
             style={{
               flex: '0 0 calc(50% - 8px)',
-              height: '300px',
+              height: '200px',
               backgroundImage: 'url(img5.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -361,6 +361,68 @@ export default function WasteCategoryCards() {
               Register Now
             </Button>
           </div>
+
+
+<div
+  style={{
+    flex: '0 0 calc(50% - 8px)',
+    height: '200px',
+    backgroundImage: 'url(img7.webp)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    color: '#fff',
+    borderRadius: '30px',
+    padding: '16px',
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      borderRadius: '30px',
+      zIndex: 0,
+    }}
+  />
+
+  {/* Title - top left */}
+  <Typography
+    fontWeight="bold"
+    sx={{ position: 'absolute', top: 16, left: 16, zIndex: 1 }}
+  >
+    Non-Ferrous Metals
+  </Typography>
+
+  {/* Button - top right */}
+  <Button
+    variant="contained"
+    size="medium"
+    sx={{
+      zIndex: 1,
+      position: 'absolute',
+      top: 16,
+      right: 16,
+      backgroundColor: '#fdecea',
+      color: '#d32f2f',
+      textTransform: 'none',
+      padding: '4px 4px',
+      fontWeight: 'bold',
+      '&:hover': {
+        backgroundColor: '#f9d7d5',
+      },
+    }}
+  >
+    Coming Soon
+  </Button>
+</div>
+
 
         </div>
       </Box>

@@ -88,7 +88,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon  fontSize="large" />
+                                <CheckCircleIcon color="success" fontSize="large" />
                                 <Typography fontWeight="bold">Step 2</Typography>
                                 <Typography fontSize="small">Documents Uploaded</Typography>
                             </Box>

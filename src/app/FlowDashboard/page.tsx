@@ -110,6 +110,7 @@ function Page() {
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: '#F5F5F5' }}>
+               <TableCell>Company  Name</TableCell>
               <TableCell>Application ID</TableCell>
               <TableCell>Application Type</TableCell>
               <TableCell>Created Date</TableCell>
@@ -120,6 +121,7 @@ function Page() {
           </TableHead>
           <TableBody>
             <TableRow>
+              <TableCell sx={{ color: '#757575' }}>Pavan Pvt Ltd</TableCell>
               <TableCell sx={{ color: '#757575' }}>APP001</TableCell>
               <TableCell sx={{ color: '#757575' }}>Registration</TableCell>
               <TableCell sx={{ color: '#757575' }}>2025-07-17</TableCell>
@@ -130,6 +132,7 @@ function Page() {
               </TableCell>
             </TableRow>
             <TableRow>
+              <TableCell sx={{ color: '#757575' }}>unify Pvt Ltd</TableCell>
               <TableCell sx={{ color: '#757575' }}>APP002</TableCell>
               <TableCell sx={{ color: '#757575' }}>Producer</TableCell>
               <TableCell sx={{ color: '#757575' }}>2025-07-16</TableCell>
@@ -140,6 +143,7 @@ function Page() {
               </TableCell>
             </TableRow>
             <TableRow>
+              <TableCell sx={{ color: '#757575' }}>logify Pvt Ltd</TableCell>
               <TableCell sx={{ color: '#757575' }}>APP003</TableCell>
               <TableCell sx={{ color: '#757575' }}>Recycler</TableCell>
               <TableCell sx={{ color: '#757575' }}>2025-07-15</TableCell>

@@ -184,11 +184,12 @@ export default function Page() {
                             <Typography variant="subtitle2" fontWeight="bold" color="text.primary" gutterBottom>
                                 Authorized Person Details
                             </Typography>
-                            <Typography color="error" variant="body2">
-                                ❌ PAN field is repeated or invalid
+                            <Typography color="success" variant="body2">
+                                ✅ All required fields are present.
                             </Typography>
-                            <Typography color="warning.main" variant="body2">
-                                ⚠ Suggestion: Enter valid 10-character PAN
+                            <Typography  variant="body2">
+                                ⚠ Reminder: Please ensure the PAN is valid and exactly 10 characters long.
+
                             </Typography>
 
                             <Divider sx={{ my: 2 }} />

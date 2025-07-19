@@ -27,7 +27,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
   const router = useRouter();
 
   return (
-    <Box sx={{ display: 'flex',zoom: 0.8 }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* <AppBar
         position="fixed"
@@ -122,7 +122,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 <ListItemText primary={"Dashboard"} />
               </ListItemButton>
             </ListItem>
-              <ListItem disablePadding >
+              {/* <ListItem disablePadding >
               <ListItemButton
                 onClick={() => router.push('/Registrations')}
                 sx={{
@@ -142,7 +142,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 </ListItemIcon>
                 <ListItemText primary={"Registrations"} />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
            <ListItem disablePadding >
               <ListItemButton
                 onClick={() => router.push('/RemoteVerification')}
@@ -169,7 +169,7 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, backgroundColor: '#F9F9F9', p: 3, minHeight: '100vh' ,zoom:0.8}}
+        sx={{ flexGrow: 1, backgroundColor: '#F9F9F9', p: 3, minHeight: '100vh' }}
       >
         <Toolbar />
         {children}
