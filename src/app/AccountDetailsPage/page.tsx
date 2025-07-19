@@ -14,7 +14,7 @@ useEffect(() => {
       {
         name: 'page1',
         elements: [
-          { type: 'html', name: 'question22', html: '<h3>Registration for EPR Registration</h3>' },
+          { type: 'html', name: 'question22', html: '<h3>Registration for Common EPR Registration</h3>' },
           { type: 'text', name: 'question19', title: 'GST Number *' },
           { type: 'html', name: 'question14', html: '<h4>Company Details</h4>' },
           { type: 'text', name: 'question1', title: 'Legal Name*' },
