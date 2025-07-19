@@ -201,7 +201,7 @@ export default function VerificationPage() {
 
           <Box
             sx={{
-              height: '85%',
+              height: '90%',
               padding: '20px',
               backgroundColor: '#eaeaea',
               borderRadius: 2,

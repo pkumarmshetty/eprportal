@@ -107,7 +107,7 @@ export default function SurveyPreview() {
 
           <div style={{ width: '180px', textAlign: 'center' }}>
             <strong>Type of Company</strong><br />
-            medium
+            Medium
           </div>
 
           <div style={{ width: '180px', textAlign: 'center', cursor: 'pointer', textDecoration: 'underline' }}>

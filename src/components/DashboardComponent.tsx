@@ -24,6 +24,7 @@ const drawerWidth = 240;
 
 export default function DashboardComponent({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+   const showQRCode = sessionStorage.getItem('showQRCode');
   const [first, setfirst] = React.useState('')
   React.useEffect(() => {
     let role = localStorage.getItem('producer');
@@ -62,6 +63,7 @@ export default function DashboardComponent({ children }: { children: React.React
             onClick={() => {
               localStorage.removeItem('producer');
               router.push('/');
+              sessionStorage.removeItem('showQRCode');
             }}
             sx={{
               borderRadius: '20px',
@@ -284,6 +286,8 @@ export default function DashboardComponent({ children }: { children: React.React
           </ListItem>
 
         </List>
+        {showQRCode&&<img src="qr.svg" />}
+        
       </Drawer>
 
       <Box

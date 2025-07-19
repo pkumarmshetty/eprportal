@@ -399,7 +399,7 @@ export default function SurveyPreview() {
 
           <div style={{ width: '180px', textAlign: 'center' }}>
             <strong>Type of Company</strong><br />
-            medium
+            Medium
           </div>
 
           <div style={{ width: '180px', textAlign: 'center', cursor: 'pointer', textDecoration: 'underline' }}>
@@ -472,7 +472,8 @@ export default function SurveyPreview() {
                     <input ref={waterDateRef} type="date" style={styles.input} />
                   </td>
                   <td style={styles.td}>
-                    <input ref={waterFileRef} type="file" style={styles.upload} />
+                     documents.jpg
+                    {/* <input ref={waterFileRef} type="file" style={styles.upload} /> */}
                   </td>
                   <td style={styles.td}>
                     <input ref={airAppRef} type="text" style={styles.input} />
@@ -481,7 +482,8 @@ export default function SurveyPreview() {
                     <input ref={airDateRef} type="date" style={styles.input} />
                   </td>
                   <td style={styles.td}>
-                    <input ref={airFileRef} type="file" style={styles.upload} />
+                    documents.jpg
+                    {/* <input ref={airFileRef} type="file" style={styles.upload} /> */}
                   </td>
                 </tr>
               </tbody>
