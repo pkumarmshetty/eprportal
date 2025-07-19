@@ -38,75 +38,10 @@ function Page() {
     const router = useRouter();
   return (
     <AdminDashboard>
-      <br>
-</br>
-<h2>Dashboard</h2>
-<br></br>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 2,
-        }}
-      >
-        {cardData.map((card, index) => (
-          <Box key={index} sx={{ width: '23.5%' }}>
-            <Card
-              sx={{
-                height: 180,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                borderRadius: '20px',
-                boxShadow: 1,
-
-              }}
-            >
-              {/* Top Row */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  padding: 2,
-                }}
-              >
-                <Box>{card.icon}</Box>
-                <IconButton size="small">
-                  <MoreVertIcon />
-                </IconButton>
-              </Box>
-
-              <Box sx={{ flexGrow: 1 }} /> {/* Spacer */}
-
-              {/* Bottom Row */}
-              <CardContent
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-end',
-                  paddingTop: 0,
-                }}
-              >
-                <Typography fontWeight="bold">{card.title}</Typography>
-                <Box
-                  sx={{
-                    backgroundColor: '#4caf50',
-                    color: '#fff',
-                    padding: '4px 10px',
-                    borderRadius: '8px',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  +{card.count}
-                </Box>
-              </CardContent>
-            </Card>
-          </Box>
-        ))}
-      </Box>
+  
+     
         <Box sx={{ mt: 4 }}>
-      <h3 style={{padding:'20px 0px', fontWeight:'bold'}}>New Registration</h3>
+      <h3 style={{padding:'20px 0px', fontWeight:'bold'}}>Registrations</h3>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

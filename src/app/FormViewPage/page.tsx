@@ -40,7 +40,7 @@ export default function SurveyPreview() {
   }, []);
 
   const handleSubmit = () => {
-    model?.doComplete();
+    model?.doComplete();  
   };
 
   if (!model) return <p></p>;

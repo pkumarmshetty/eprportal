@@ -101,48 +101,6 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
 
         {/* Sidebar Menu */}
         <List>
-         <ListItem disablePadding >
-              <ListItemButton
-                onClick={() => router.push('/admin/dashboard')}
-                sx={{
-                  borderRadius: '30px',
-                  mx: 1,
-                  '&:hover': {
-                    bgcolor: 'black',
-                    color: 'white',
-                    '& .MuiListItemIcon-root': {
-                      color: 'white',
-                    },
-                  },
-                }}
-              >
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Dashboard"} />
-              </ListItemButton>
-            </ListItem>
-              {/* <ListItem disablePadding >
-              <ListItemButton
-                onClick={() => router.push('/Registrations')}
-                sx={{
-                  borderRadius: '30px',
-                  mx: 1,
-                  '&:hover': {
-                    bgcolor: 'black',
-                    color: 'white',
-                    '& .MuiListItemIcon-root': {
-                      color: 'white',
-                    },
-                  },
-                }}
-              >
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Registrations"} />
-              </ListItemButton>
-            </ListItem> */}
            <ListItem disablePadding >
               <ListItemButton
                 onClick={() => router.push('/FlowDashboard')}
@@ -164,6 +122,50 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
                 <ListItemText primary={"Registrations"} />
               </ListItemButton>
             </ListItem>
+            <ListItem disablePadding >
+              <ListItemButton
+                onClick={() => router.push('/admin/dashboard')}
+                sx={{
+                  borderRadius: '30px',
+                  mx: 1,
+                  '&:hover': {
+                    bgcolor: 'black',
+                    color: 'white',
+                    '& .MuiListItemIcon-root': {
+                      color: 'white',
+                    },
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <AdjustIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Annual Filings"} />
+              </ListItemButton>
+            </ListItem>
+         <ListItem disablePadding >
+              <ListItemButton
+                onClick={() => router.push('/admin/dashboard')}
+                sx={{
+                  borderRadius: '30px',
+                  mx: 1,
+                  '&:hover': {
+                    bgcolor: 'black',
+                    color: 'white',
+                    '& .MuiListItemIcon-root': {
+                      color: 'white',
+                    },
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <AdjustIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Dashboard"} />
+              </ListItemButton>
+            </ListItem>
+              
+          
         </List>
       </Drawer>
 
@@ -177,4 +179,6 @@ export default function AdminDashboard({ children }: { children: React.ReactNode
     </Box>
   );
 }
+
+
 

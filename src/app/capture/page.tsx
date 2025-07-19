@@ -124,7 +124,7 @@ function Page() {
 
                     {/* Buttons */}
                     <Stack direction="row" mt={4} spacing={2}>
-                        <Button variant="outlined">View only</Button>
+                       
                         <Button
                             onClick={()=>window.location.href = '/FlowDashboardFinal'}
                             variant="contained"

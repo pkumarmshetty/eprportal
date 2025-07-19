@@ -905,7 +905,7 @@ export default function SurveyPreview() {
         <DialogTitle>Registration Successful</DialogTitle>
         <DialogContent>
           <Typography>
-            Your registered email ID is: <strong>{registeredEmail}</strong>
+            Your registered email ID is: <strong>shaivik@gmail.com</strong>
           </Typography>
           <Typography mt={2} color="text.secondary">
             Redirecting to login page in 2 seconds...
