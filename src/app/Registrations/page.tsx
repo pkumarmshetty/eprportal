@@ -153,7 +153,7 @@ export default function Page() {
                             >
                                 AI Confidence Score
                             </Typography>
-                            <Typography
+                            {/* <Typography
                                 sx={{
                                     fontSize: '32px',
                                     fontWeight: '700',
@@ -163,7 +163,7 @@ export default function Page() {
                                 }}
                             >
                                 82%
-                            </Typography>
+                            </Typography> */}
 
                             <Divider sx={{ mb: 2 }} />
 

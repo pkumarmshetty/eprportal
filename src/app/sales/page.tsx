@@ -30,7 +30,7 @@ function page() {
                             onChange={(e) => setCategory(e.target.value)}
                         >
                             {plasticCategories.map((item, index) => (
-                                <MenuItem key={index} value={item}>
+                                <MenuItem sx={{zoom: '0.7'}} key={index} value={item}>
                                     {item}
                                 </MenuItem>
                             ))}

@@ -56,10 +56,10 @@ const NavbarMain = () => {
     if(temp===true) {
     window.location.href = '/FlowDashboard';
     }else{
-      window.location.href = '/UserDashboard';
+      window.location.href = '/FlowDashboard';
     } // Redirect to home page
   }
-  if(email==="user" && password==="user") {
+  if(email==="pavan@gmail.com" && password==="user") {
 
     window.location.href = '/WasteCategory'; // Redirect to home page
   }
