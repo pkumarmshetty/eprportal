@@ -286,7 +286,27 @@ export default function DashboardComponent({ children }: { children: React.React
           </ListItem>
 
         </List>
-        {showQRCode&&<img src="qr.svg" />}
+     {showQRCode && (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: '40px',
+    }}
+  >
+    <h6 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '16px' }}>
+      Registration Certificate
+    </h6>
+    <img
+      src="qr.svg"
+      alt="QR Code"
+      style={{ width: '200px', height: '200px' }}
+    />
+  </div>
+)}
+
         
       </Drawer>
 
