@@ -467,4 +467,4 @@ return (
       </div>
     </div>
   </DashboardComponent>
-);
+)};

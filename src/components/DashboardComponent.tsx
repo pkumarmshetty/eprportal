@@ -24,11 +24,11 @@ const drawerWidth = 240;
 
 export default function DashboardComponent({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-   const showQRCode = sessionStorage.getItem('showQRCode');
+  const [showQRCode, setShowQRCode] = React.useState(false);
   const [first, setfirst] = React.useState('')
   React.useEffect(() => {
     let role = localStorage.getItem('producer');
-
+    setShowQRCode(sessionStorage.getItem('showQRCode'));
     setfirst(role);
   }, [setfirst])
   return (
