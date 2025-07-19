@@ -1,8 +1,8 @@
-import type { NextConfig } from "next";
+import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false,
-  /* config options here */
+    reactStrictMode: false,
+    /* config options here */
     async rewrites() {
         return [
             {
