@@ -111,9 +111,9 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon   fontSize="large" />
+                                <CheckCircleIcon fontSize="large" />
                                 <Typography fontWeight="bold">Step 3</Typography>
-                                <Typography fontSize="small">Verification Done</Typography>
+                                <Typography fontSize="small">Verification Pending</Typography>
                             </Box>
                         </Box>
 
@@ -134,7 +134,7 @@ function Page() {
                                     alignItems: 'center',
                                 }}
                             >
-                                <CheckCircleIcon  fontSize="large" />
+                                <CheckCircleIcon fontSize="large" />
                                 <Typography fontWeight="bold">Step 4</Typography>
                                 <Typography fontSize="small">Approved</Typography>
                             </Box>
@@ -142,47 +142,72 @@ function Page() {
                     </Box>
                 </Box>
             </Box>
-            
+
 
             <div
                 style={{
                     width: '100%',
                     display: 'flex',
                     justifyContent: 'center',
-                    marginTop: '20px',
+                    marginTop: '0px',
+
                 }}
             >
-                <img
-                    src="https://i.ibb.co/v6W4JHwS/tracker.png"
-                    alt="tracker"
-                    style={{ maxWidth: '90vw', height: 'auto' }}
-                />
-
-            </div>
-             <div
+                <span>
+                    <img
+                        src="img8.svg"
+                        alt="tracker"
+                        style={{ maxWidth: '100vw', height: 'auto', padding: '20px' }}
+                    />
+                </span>
+                <span>
+                    <img
+                        src="img9.svg"
+                        alt="tracker"
+                        style={{ maxWidth: '100vw', height: 'auto', padding: '20px' }}
+                    />
+                     <div
                 style={{
                     backgroundColor: '#2e7d32', // Green color (Material UI success)
                    width:'300px',             // Set desired height
                     display: 'flex',             // Center the link
                     justifyContent: 'center',
                     alignItems: 'center',
-                   cursor: 'pointer'     
+                   cursor: 'pointer',  
+                   position:'relative'  ,
+                   top:'-220px' ,
+                   right:'-50px'
                 }}
             >
                 <a
-                    href="https://8x8.vc/vpaas-magic-cookie-cf5217ce8a4048d89baa3f88ab649551/eprverification"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                        color: 'white',
-                        fontWeight: 'bold',
-                        textDecoration: 'none',
-                        fontSize: '16px',
-                    }}
-                >
-                    Start Remote Verification
-                </a>
+  href="https://8x8.vc/vpaas-magic-cookie-cf5217ce8a4048d89baa3f88ab649551/eprverification"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    backgroundColor: '#2e7d32',    // Material UI green
+    width: '300px',
+    height: '48px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    fontSize: '16px',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    
+  }}
+>
+  Start Remote Verification
+</a>
+
             </div>
+                </span>
+
+
+            </div>
+
 
 
         </DashboardComponent>
