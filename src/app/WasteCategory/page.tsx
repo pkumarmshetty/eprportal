@@ -80,11 +80,12 @@ export default function WasteCategoryCards() {
                 left: 16,
                 textTransform: 'none',
                 zIndex: 1,
-                backgroundColor: 'green',
-                color: 'white',
+               backgroundColor: '#75a02bff', // olive green
+                color: 'white', // white text
                 '&:hover': {
-                  backgroundColor: '#f0f0f0', // light gray on hover
+                  backgroundColor: '#226b00ff', // slightly darker olive on hover
                 },
+                
               }}
               onClick={() => router.push('/TrackPage')}
             >

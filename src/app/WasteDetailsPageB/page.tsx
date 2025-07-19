@@ -389,17 +389,17 @@ export default function SurveyPreview() {
         >
           <div style={{ width: '180px', textAlign: 'center' }}>
             <strong>GST Number</strong><br />
-            27ABCDE1234F1Z5
+            24AAACC1206D1ZM
           </div>
 
           <div style={{ width: '180px', textAlign: 'center' }}>
             <strong>Legal Name</strong><br />
-            Recycler
+            Pavan Pvt Ltd
           </div>
 
           <div style={{ width: '180px', textAlign: 'center' }}>
             <strong>Type of Company</strong><br />
-            Small
+            medium
           </div>
 
           <div style={{ width: '180px', textAlign: 'center', cursor: 'pointer', textDecoration: 'underline' }}>
@@ -418,16 +418,16 @@ export default function SurveyPreview() {
           }}
         >
           <button style={{ padding: '10px 20px', backgroundColor: 'gray', color: '#000000', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}>
-            Page A
+            Part A
           </button>
           <button style={{ padding: '10px 20px', backgroundColor: '#9CBC4C', color: '#000000', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}>
-            Page B
+            Part B
           </button>
           <button style={{ padding: '10px 20px', backgroundColor: 'gray', color: '#000000', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}>
-            Page C
+            Part C
           </button>
           <button style={{ padding: '10px 20px', backgroundColor: 'gray', color: '#000000', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}>
-            Page D
+            Part D
           </button>
         </div>
 

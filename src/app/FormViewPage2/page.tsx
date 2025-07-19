@@ -129,17 +129,17 @@ useEffect(() => {
             >
                 <div style={{ width: '180px', textAlign: 'center' }}>
                     <strong>GST Number</strong><br />
-                    27ABCDE1234F1Z5
+                    24AAACC1206D1ZM
                 </div>
 
                 <div style={{ width: '180px', textAlign: 'center' }}>
                     <strong>Legal Name</strong><br />
-                    Recycler
+                    Pavan Pvt Ltd
                 </div>
 
                 <div style={{ width: '180px', textAlign: 'center' }}>
                     <strong>Type of Company</strong><br />
-                    Small
+                    medium 
                 </div>
 
                 <div style={{ width: '180px', textAlign: 'center', cursor: 'pointer', textDecoration: 'underline' }}>
@@ -168,7 +168,7 @@ useEffect(() => {
                         cursor: 'pointer',
                     }}
                 >
-                    Page A
+                    Part A
                 </button>
 
                 <button
@@ -182,7 +182,7 @@ useEffect(() => {
                         cursor: 'pointer',
                     }}
                 >
-                    Page B
+                    Part B
                 </button>
 
                 <button
@@ -196,7 +196,7 @@ useEffect(() => {
                         cursor: 'pointer',
                     }}
                 >
-                    Page C
+                    Part C
                 </button>
 
                 <button
@@ -210,13 +210,11 @@ useEffect(() => {
                         cursor: 'pointer',
                     }}
                 >
-                    Page D
+                    Part D
                 </button>
 
             </div>
-            <div>
-                <Survey model={model} />
-                <div style={{
+            <div>  <div style={{
                     display: 'flex',
                     justifyContent: 'flex-end',
                     gap: '10px',
@@ -251,6 +249,42 @@ useEffect(() => {
                         Next
                     </button>
                 </div>
+                <Survey model={model} />
+                {/* <div style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    gap: '10px',
+                    marginTop: '20px'
+                }}>
+                    <button
+                        style={{
+                            padding: '10px 20px',
+                            fontSize: '16px',
+                            backgroundColor: '#ccc',
+                            color: '#000',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Save
+                    </button>
+
+                    <button
+                        onClick={() => window.location.href = '/WasteDetailsPageB'}
+                        style={{
+                            padding: '10px 20px',
+                            fontSize: '16px',
+                            backgroundColor: 'black',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Next
+                    </button>
+                </div> */}
 
             </div>
 
